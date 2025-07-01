@@ -106,11 +106,9 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            /* Remove or comment out the background image and gradient overlay */
-            /* background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%), 
-                url('https://placehold.co/1920x1080/667eea/764ba2/webp?text=Hero+Background') center center / cover no-repeat; */
-            background: #667eea;
-            /* Or use any solid color or gradient you prefer */
+            /* UPDATED: Background image with gradient overlay */
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), /* Gradient overlay for better text readability */
+                        url('assets/background.png') center center / cover no-repeat; /* Your background image */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -123,7 +121,7 @@
         }
 
         .hero::before {
-            /* Animated background grid pattern - now lighter opacity */
+            /* Animated background grid pattern */
             content: '';
             position: absolute;
             width: 150%;
@@ -131,11 +129,11 @@
             height: 150%;
             top: -25%;
             left: -25%;
+            /* Adjusted grid pattern color/opacity for new background */
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
             animation: floatBackground 25s ease-in-out infinite;
             /* Slower animation */
-            opacity: 0.2;
-            /* Adjusted opacity to blend with image */
+            opacity: 0.2; /* Adjusted opacity to blend with image */
             z-index: 1;
             /* Ensure it's below hero-content but above background */
         }
@@ -195,7 +193,8 @@
             /* More space between buttons */
             justify-content: center;
             animation: slideInUp 1s ease-out 0.4s both;
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            flex-wrap: wrap;
+            /* Allow buttons to wrap on smaller screens */
         }
 
         .btn {
@@ -216,7 +215,7 @@
 
         .btn-primary {
             background: white;
-            color: #667eea;
+            color: #667eea; /* Keeping original color, should look good on gradient */
         }
 
         .btn-secondary {
@@ -405,17 +404,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Distribute space between icon and label */
-            width: 90px; /* Increased width for better spacing */
-            height: 100px; /* Increased height to accommodate label without cutoff */
+            justify-content: space-between;
+            /* Distribute space between icon and label */
+            width: 90px;
+            /* Increased width for better spacing */
+            height: 100px;
+            /* Increased height to accommodate label without cutoff */
             border-radius: 10px;
             background: #ffffff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
             border: 1px solid #e0e0e0;
-            padding: 8px; /* Increased padding inside the item */
-            text-align: center; /* Center text labels */
+            padding: 8px;
+            /* Increased padding inside the item */
+            text-align: center;
+            /* Center text labels */
         }
 
         .skill-icon-item:hover {
@@ -424,24 +428,34 @@
         }
 
         .skill-icon-item img {
-            width: 55px; /* Slightly larger icon image */
-            height: 55px; /* Slightly larger icon image */
+            width: 55px;
+            /* Slightly larger icon image */
+            height: 55px;
+            /* Slightly larger icon image */
             object-fit: contain;
-            margin-bottom: 5px; /* Space between icon and label */
-            flex-shrink: 0; /* Prevent image from shrinking */
+            margin-bottom: 5px;
+            /* Space between icon and label */
+            flex-shrink: 0;
+            /* Prevent image from shrinking */
         }
 
         .skill-icon-item .skill-label {
             font-size: 0.75rem;
             color: #555;
-            white-space: normal; /* Allow text to wrap */
-            word-break: break-word; /* Break long words if necessary */
-            line-height: 1.2; /* Adjust line height for wrapped text */
-            flex-grow: 1; /* Allow label to take available space */
+            white-space: normal;
+            /* Allow text to wrap */
+            word-break: break-word;
+            /* Break long words if necessary */
+            line-height: 1.2;
+            /* Adjust line height for wrapped text */
+            flex-grow: 1;
+            /* Allow label to take available space */
             display: flex;
-            align-items: flex-start; /* Align text to the top within its space */
+            align-items: flex-start;
+            /* Align text to the top within its space */
             justify-content: center;
-            padding: 0 2px; /* Small horizontal padding for text */
+            padding: 0 2px;
+            /* Small horizontal padding for text */
         }
 
 
@@ -1042,7 +1056,7 @@
                         <span class="skill-label">JavaScript</span>
                     </div>
                     <div class="skill-icon-item">
-                        <img src="assets/node.js.png" alt="Node.js">
+                        <img src="assets/node.js (2).png" alt="Node.js">
                         <span class="skill-label">Node.js</span>
                     </div>
                     <div class="skill-icon-item">
@@ -1089,6 +1103,7 @@
                         <img src="assets/google drive api.png" alt="Google Drive API">
                         <span class="skill-label">Google Drive API</span>
                     </div>
+                    
                     <div class="skill-icon-item">
                         <img src="assets/face-api.png" alt="Face-API.js">
                         <span class="skill-label">Face-API.js</span>
@@ -1102,6 +1117,7 @@
                         <img src="assets/git.png" alt="Git">
                         <span class="skill-label">Git</span>
                     </div>
+                    
                     <div class="skill-icon-item">
                         <img src="assets/problem solving.png" alt="Problem Solving">
                         <span class="skill-label">Problem Solving</span>
@@ -1182,7 +1198,7 @@
                 <div class="project-content">
                     <p>Personalized mental health support application using GenAI to analyze user moods and provide
                         empathetic responses.</p>
-                    <div class="project-tech">
+                    <div class="tech-tag">
                         <span class="tech-tag">Flutter</span>
                         <span class="tech-tag">GenAI</span>
                         <span class="tech-tag">Mood Analysis</span>
