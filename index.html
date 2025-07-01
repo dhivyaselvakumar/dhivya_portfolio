@@ -373,13 +373,13 @@
             border-radius: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            width: 400px;
-            /* Set a fixed width for all containers */
-            min-width: 400px;
-            /* Ensures all are equal width */
-            max-width: 400px;
-            /* Prevents stretching beyond this */
+            /* Removed fixed width to allow flex-wrap to distribute space more evenly */
+            /* width: 400px; */
+            /* min-width: 400px; */
+            /* max-width: 400px; */
             box-sizing: border-box;
+            flex: 1 1 auto; /* Allow items to grow and shrink */
+            max-width: 450px; /* Optional: Set a max-width for larger screens */
         }
 
         .skill-category:hover {
@@ -401,48 +401,48 @@
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            /* More space between tags */
+            gap: 1.5rem; /* Increased gap for better spacing between icons */
+            justify-content: center; /* Center icons within their category */
         }
 
         /* Styles for the skill icons */
         .skill-icon-item {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Keep column for potential future labels */
             align-items: center;
-            padding: 0.5rem;
-            border-radius: 10px;
-            background: #f0f4f8; /* Light background for the icon circle */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease;
-            width: 80px; /* Fixed width for icon container */
-            height: 80px; /* Fixed height for icon container */
             justify-content: center;
-            position: relative;
+            width: 70px; /* Slightly smaller fixed width for icon container */
+            height: 70px; /* Slightly smaller fixed height for icon container */
+            border-radius: 50%; /* Make it circular */
+            background: #ffffff; /* White background for the circle */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for the circle */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden; /* Ensure image is clipped if larger */
+            border: 1px solid #e0e0e0; /* Subtle border */
         }
 
         .skill-icon-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px); /* More pronounced lift */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .skill-icon-item img {
-            width: 50px; /* Size of the icon image */
-            height: 50px; /* Size of the icon image */
-            object-fit: contain; /* Ensure the image scales correctly */
-            margin-bottom: 0.25rem; /* Space between icon and label */
+            width: 80%; /* Make image fill most of the circle */
+            height: 80%; /* Make image fill most of the circle */
+            object-fit: contain; /* Ensure the image scales correctly without cropping */
+            /* Removed margin-bottom as no label below */
         }
 
-        .skill-icon-item .skill-label {
-            font-size: 0.75rem; /* Smaller font for label */
+        /* Removed .skill-label as it's no longer needed */
+        /* .skill-icon-item .skill-label {
+            font-size: 0.75rem;
             color: #555;
             text-align: center;
-            white-space: nowrap; /* Prevent label from wrapping */
+            white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* Add ellipsis if label is too long */
-            max-width: 100%; /* Ensure label doesn't overflow container */
-        }
+            text-overflow: ellipsis;
+            max-width: 100%;
+        } */
 
 
         /* Projects Section */
@@ -1021,124 +1021,99 @@
             <div class="skill-category">
                 <h3><i class="fas fa-code"></i> Web Technologies</h3>
                 <div class="skills-list">
-                    <!-- Updated with icons as per example -->
+                    <!-- Updated with icons only, no labels below -->
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/E44D26/FFFFFF?text=HTML5" alt="HTML5">
-                        <span class="skill-label">HTML5</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/264DE4/FFFFFF?text=CSS3" alt="CSS3">
-                        <span class="skill-label">CSS3</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/00BFFC/FFFFFF?text=TW" alt="Tailwind CSS">
-                        <span class="skill-label">Tailwind CSS</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/563D7C/FFFFFF?text=BS" alt="Bootstrap">
-                        <span class="skill-label">Bootstrap</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/F0DB4F/323330?text=JS" alt="JavaScript">
-                        <span class="skill-label">JavaScript</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/68A063/FFFFFF?text=Node" alt="Node.js">
-                        <span class="skill-label">Node.js</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/61DAFB/282C34?text=React" alt="React.js">
-                        <span class="skill-label">React.js</span>
                     </div>
                 </div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-laptop-code"></i> Programming & ML</h3>
                 <div class="skills-list">
-                    <!-- Updated with icons as per example -->
+                    <!-- Updated with icons only, no labels below -->
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/3776AB/FFFFFF?text=Py" alt="Python">
-                        <span class="skill-label">Python</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/A8B9CC/FFFFFF?text=C" alt="C Programming">
-                        <span class="skill-label">C Programming</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/FF6F00/FFFFFF?text=TF" alt="TensorFlow">
-                        <span class="skill-label">TensorFlow</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/0C4B33/FFFFFF?text=DJ" alt="Django">
-                        <span class="skill-label">Django</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/4285F4/FFFFFF?text=ML" alt="Machine Learning">
-                        <span class="skill-label">Machine Learning</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/DB4437/FFFFFF?text=GenAI" alt="GenAI">
-                        <span class="skill-label">GenAI</span>
                     </div>
                 </div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-mobile-alt"></i> Mobile & Cloud</h3>
                 <div class="skills-list">
-                    <!-- Updated with icons as per example -->
+                    <!-- Updated with icons only, no labels below -->
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/02569B/FFFFFF?text=Flt" alt="Flutter">
-                        <span class="skill-label">Flutter</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/FFCA28/333333?text=FB" alt="Firebase">
-                        <span class="skill-label">Firebase</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/4285F4/FFFFFF?text=GD" alt="Google Drive API">
-                        <span class="skill-label">Google Drive API</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/4285F4/FFFFFF?text=Cloud" alt="Cloud Computing">
-                        <span class="skill-label">Cloud Computing</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/61DAFB/282C34?text=Face" alt="Face-API.js">
-                        <span class="skill-label">Face-API.js</span>
                     </div>
                 </div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-tools"></i> Tools & Soft Skills</h3>
                 <div class="skills-list">
-                    <!-- Updated with icons as per example -->
+                    <!-- Updated with icons only, no labels below -->
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/F05033/FFFFFF?text=Git" alt="Git">
-                        <span class="skill-label">Git</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/66BB6A/FFFFFF?text=IoT" alt="IoT Sensors">
-                        <span class="skill-label">IoT Sensors</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/4CAF50/FFFFFF?text=Embed" alt="Embedded Systems">
-                        <span class="skill-label">Embedded Systems</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/FFC107/333333?text=PS" alt="Problem Solving">
-                        <span class="skill-label">Problem Solving</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/9C27B0/FFFFFF?text=Lead" alt="Leadership">
-                        <span class="skill-label">Leadership</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/E91E63/FFFFFF?text=Team" alt="Team Player">
-                        <span class="skill-label">Team Player</span>
                     </div>
                     <div class="skill-icon-item">
                         <img src="https://placehold.co/50x50/009688/FFFFFF?text=Comm" alt="Communication Skills">
-                        <span class="skill-label">Communication Skills</span>
                     </div>
                 </div>
             </div>
