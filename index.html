@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhivya S </title>
+    <title>Dhivya S - Portfolio</title>
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts - Inter for a clean, modern look -->
@@ -405,16 +405,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 80px; /* Adjusted width for icon container */
-            height: 90px; /* Adjusted height to accommodate label */
-            border-radius: 10px; /* Rounded corners for the card, not full circle */
+            justify-content: space-between; /* Distribute space between icon and label */
+            width: 90px; /* Increased width for better spacing */
+            height: 100px; /* Increased height to accommodate label without cutoff */
+            border-radius: 10px;
             background: #ffffff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Softer shadow */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
             border: 1px solid #e0e0e0;
-            padding: 5px; /* Added padding inside the item */
+            padding: 8px; /* Increased padding inside the item */
+            text-align: center; /* Center text labels */
         }
 
         .skill-icon-item:hover {
@@ -423,20 +424,23 @@
         }
 
         .skill-icon-item img {
-            width: 50px; /* Size of the icon image */
-            height: 50px; /* Size of the icon image */
+            width: 55px; /* Slightly larger icon image */
+            height: 55px; /* Slightly larger icon image */
             object-fit: contain;
             margin-bottom: 5px; /* Space between icon and label */
+            flex-shrink: 0; /* Prevent image from shrinking */
         }
 
         .skill-icon-item .skill-label {
-            font-size: 0.75rem; /* Smaller font for label */
+            font-size: 0.75rem;
             color: #555;
-            text-align: center;
-            white-space: nowrap; /* Prevent label from wrapping */
-            overflow: hidden;
-            text-overflow: ellipsis; /* Add ellipsis if label is too long */
-            max-width: 100%; /* Ensure label doesn't overflow container */
+            white-space: normal; /* Allow text to wrap */
+            word-break: break-word; /* Break long words if necessary */
+            line-height: 1.2; /* Adjust line height for wrapped text */
+            flex-grow: 1; /* Allow label to take available space */
+            display: flex;
+            align-items: flex-start; /* Align text to the top within its space */
+            justify-content: center;
             padding: 0 2px; /* Small horizontal padding for text */
         }
 
