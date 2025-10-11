@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,965 +105,10 @@
         /* Pause animation on hover for better UX */
         .skill-item:hover {
             transform: scale(1.05);
-=======
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhivya S</title>
-    <!-- Font Awesome for icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts - Inter for a clean, modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f7f6;
-            /* Light background */
-            overflow-x: hidden;
-            /* Prevent horizontal scroll on small screens */
-            scroll-behavior: smooth;
-            /* Smooth scroll for anchor links */
-        }
-
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            /* Slightly transparent white */
-            backdrop-filter: blur(10px);
-            /* Frosted glass effect */
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            /* Subtle shadow */
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            /* Gradient for logo text */
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            /* Increased gap for better spacing */
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #495057;
-            /* Darker text for better contrast */
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            /* Underline effect on hover */
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-            /* Highlight color on hover */
-            transform: translateY(-2px);
-            /* Subtle lift effect */
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            /* UPDATED: Background image with gradient overlay */
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), /* Gradient overlay for better text readability */
-                        url('assets/background.png') center center / cover no-repeat; /* Your background image */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            padding-top: 5rem;
-            /* Space for fixed nav */
-        }
-
-        .hero::before {
-            /* Animated background grid pattern */
-            content: '';
-            position: absolute;
-            width: 150%;
-            /* Larger to cover movement */
-            height: 150%;
-            top: -25%;
-            left: -25%;
-            /* Adjusted grid pattern color/opacity for new background */
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: floatBackground 25s ease-in-out infinite;
-            /* Slower animation */
-            opacity: 0.2; /* Adjusted opacity to blend with image */
-            z-index: 1;
-            /* Ensure it's below hero-content but above background */
-        }
-
-        @keyframes floatBackground {
-
-            0%,
-            100% {
-                transform: translate(0px, 0px) rotate(0deg);
-            }
-
-            25% {
-                transform: translate(10px, -5px) rotate(0.5deg);
-            }
-
-            50% {
-                transform: translate(-10px, 5px) rotate(-0.5deg);
-            }
-
-            75% {
-                transform: translate(5px, 10px) rotate(0.2deg);
-            }
-        }
-
-
-        .hero-content {
-            z-index: 2;
-            /* Ensure content is above background and pattern */
-            position: relative;
-            max-width: 900px;
-            padding: 0 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            /* Larger font size */
-            margin-bottom: 1rem;
-            animation: slideInUp 1s ease-out;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            /* Subtle text shadow */
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            /* Larger font size */
-            margin-bottom: 2.5rem;
-            /* More space below paragraph */
-            opacity: 0.95;
-            animation: slideInUp 1s ease-out 0.2s both;
-            font-weight: 300;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            /* More space between buttons */
-            justify-content: center;
-            animation: slideInUp 1s ease-out 0.4s both;
-            flex-wrap: wrap;
-            /* Allow buttons to wrap on smaller screens */
-        }
-
-        .btn {
-            padding: 14px 35px;
-            /* Larger padding for buttons */
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            /* Larger font size for buttons */
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            /* Initial subtle shadow */
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea; /* Keeping original color, should look good on gradient */
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            /* More pronounced lift */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            /* Larger shadow on hover */
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(80px);
-                /* Starts lower */
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 6rem 0;
-            /* More padding for sections */
-            max-width: 1200px;
-            /* Keep this to constrain overall content */
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-            /* Use flexbox to center content horizontally within the section's max-width */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* Centers direct children like section-title and content containers */
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            /* Larger font size */
-            margin-bottom: 4rem;
-            /* More space below title */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            /* More gap */
-            align-items: center;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 280px;
-            /* Larger image */
-            height: 280px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin: 0 auto;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            /* More prominent shadow */
-            border: 5px solid rgba(255, 255, 255, 0.8);
-            /* White border */
-            overflow: hidden;
-            /* Ensure image is clipped to circle */
-        }
-
-        .profile-img .actual-profile-photo {
-            /* Style for the image */
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Ensures the image covers the circle without distortion */
-            border-radius: 50%;
-            /* Ensures the image itself is circular */
-        }
-
-        .about-text {
-            font-size: 1.15rem;
-            /* Slightly larger text */
-            line-height: 1.9;
-            color: #555;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            /* More flexible grid */
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2.5rem;
-            background: white;
-            border-radius: 20px;
-            /* More rounded corners */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-8px);
-            /* More lift */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            /* Larger number */
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            align-items: stretch;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            box-sizing: border-box;
-            flex: 1 1 auto;
-            max-width: 450px;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-category h3 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        /* Styles for the skill icons */
-        .skill-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            /* Distribute space between icon and label */
-            width: 90px;
-            /* Increased width for better spacing */
-            height: 100px;
-            /* Increased height to accommodate label without cutoff */
-            border-radius: 10px;
-            background: #ffffff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-            padding: 8px;
-            /* Increased padding inside the item */
-            text-align: center;
-            /* Center text labels */
-        }
-
-        .skill-icon-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-icon-item img {
-            width: 55px;
-            /* Slightly larger icon image */
-            height: 55px;
-            /* Slightly larger icon image */
-            object-fit: contain;
-            margin-bottom: 5px;
-            /* Space between icon and label */
-            flex-shrink: 0;
-            /* Prevent image from shrinking */
-        }
-
-        .skill-icon-item .skill-label {
-            font-size: 0.75rem;
-            color: #555;
-            white-space: normal;
-            /* Allow text to wrap */
-            word-break: break-word;
-            /* Break long words if necessary */
-            line-height: 1.2;
-            /* Adjust line height for wrapped text */
-            flex-grow: 1;
-            /* Allow label to take available space */
-            display: flex;
-            align-items: flex-start;
-            /* Align text to the top within its space */
-            justify-content: center;
-            padding: 0 2px;
-            /* Small horizontal padding for text */
-        }
-
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            /* Adjusted min-width */
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            /* More rounded */
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-            /* More prominent shadow */
-            transition: all 0.3s ease;
-            border: 1px solid #e0e6eb;
-            /* Lighter border */
-        }
-
-        .project-card:hover {
-            transform: translateY(-12px);
-            /* More lift */
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.8rem;
-            /* More padding */
-        }
-
-        .project-title {
-            font-size: 1.6rem;
-            /* Larger title */
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .project-content {
-            padding: 1.8rem;
-            color: #555;
-        }
-
-        .project-content p {
-            margin-bottom: 1.2rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            /* More space between tech tags */
-            margin-top: 1rem;
-        }
-
-        .tech-tag {
-            background: #e9eff4;
-            /* Lighter background for tech tags */
-            color: #495057;
-            padding: 0.4rem 1rem;
-            border-radius: 18px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-link {
-            display: inline-flex;
-            /* Use flex for icon alignment */
-            align-items: center;
-            margin-top: 1.5rem;
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .project-link i {
-            margin-left: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .project-link:hover {
-            color: #764ba2;
-            transform: translateX(5px);
-            /* Slide effect on hover */
-        }
-
-        /* Experience & Education */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-            /* More space for the line */
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            /* Thicker line */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-            /* More space between items */
-            background: white;
-            padding: 2.5rem;
-            /* More padding */
-            border-radius: 20px;
-            margin-left: 2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .timeline-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.7rem;
-            /* Adjusted position for thicker line */
-            top: 2.8rem;
-            /* Centered with new padding */
-            width: 18px;
-            /* Larger circle */
-            height: 18px;
-            background: #667eea;
-            border-radius: 50%;
-            border: 4px solid #f4f7f6;
-            /* Border matching body background */
-            box-shadow: 0 0 0 4px #764ba2;
-            /* Inner glow/shadow */
-        }
-
-        .timeline-date {
-            background: #eef2f7;
-            /* Light background for date */
-            color: #667eea;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 10px;
-            display: inline-block;
-            margin-bottom: 0.8rem;
-        }
-
-        .timeline-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 0.6rem 0;
-            color: #333;
-        }
-
-        .timeline-company {
-            color: #666;
-            margin-bottom: 1.2rem;
-            font-style: italic;
-        }
-
-        /* Achievements */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .achievement-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .achievement-card:hover {
-            transform: scale(1.03);
-            /* Slightly less aggressive scale */
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-        }
-
-        .achievement-icon {
-            font-size: 3rem;
-            /* Larger icon */
-            margin-bottom: 1.5rem;
-        }
-
-        .achievement-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .achievement-card p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            /* Changed to flexbox for single centered item */
-            display: flex;
-            /* NEW */
-            justify-content: center;
-            /* NEW: Center the single child */
-            align-items: flex-start;
-            /* Align items to the start vertically */
-            gap: 4rem;
-            /* Keep original gap if you ever add more items later */
-            max-width: 900px;
-            /* Keep max-width for the container */
-            margin: 0 auto;
-            /* Center the container itself */
-        }
-
-        .contact-info {
-            background: white;
-            padding: 3rem;
-            /* More padding */
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            /* NEW: Make the contact-info box itself capable of being centered */
-            width: 100%;
-            /* Ensure it takes full width of its parent (max-width: 900px) */
-            max-width: 500px;
-            /* NEW: Add a max-width to the contact-info box for better visual balance */
-        }
-
-        .contact-info h3 {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .contact-info p {
-            color: #555;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            /* More space */
-        }
-
-        .contact-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 55px;
-            /* Larger icon circle */
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.2rem;
-            font-size: 1.3rem;
-            /* Larger icon */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-item strong {
-            display: block;
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 0.2rem;
-        }
-
-        .contact-item div {
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.2rem;
-            /* More space */
-            margin-top: 2.5rem;
-            justify-content: center;
-            /* NEW: Center social links within the card */
-        }
-
-        .social-link {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .social-link:hover {
-            transform: scale(1.15);
-            /* More pronounced scale */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        /* What I'm Looking For list - REMOVED from HTML, kept CSS commented for reference */
-        /*
-        .contact-info ul {
-            margin-top: 1.5rem;
-        }
-
-        .contact-info li {
-            font-size: 1.05rem;
-            color: #555;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-info li i {
-            margin-right: 0.8rem;
-            color: #667eea;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        */
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            /* Darker footer background */
-            color: white;
-            text-align: center;
-            padding: 2.5rem 0;
-            font-size: 0.95rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .nav-container {
-                padding: 0 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .profile-img {
-                margin-bottom: 2rem;
-            }
-
-            .contact-content {
-                flex-direction: column;
-                /* Stack contact info vertically */
-                align-items: center;
-                /* Center the single contact info block */
-                max-width: 90%;
-                /* Adjust width for better fit on tablets */
-            }
-
-            .contact-info {
-                max-width: 400px;
-                /* Constrain width of single card on tablets */
-            }
-
-            .skills-grid,
-            .projects-grid,
-            .achievements-grid,
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                /* Hide navigation links on small screens */
-            }
-
-            .hero {
-                padding-top: 6rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn {
-                width: 80%;
-                /* Make buttons full width */
-                max-width: 300px;
-                padding: 12px 25px;
-            }
-
-            .section {
-                padding: 4rem 1rem;
-                /* Adjust section padding */
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                gap: 2rem;
-            }
-
-            .profile-img {
-                width: 200px;
-                height: 200px;
-                font-size: 3.5rem;
-            }
-
-            .stat-item,
-            .skill-category,
-            .project-card,
-            .timeline-item,
-            .achievement-card,
-            .contact-info {
-                padding: 2rem;
-                margin-left: 0;
-                /* Remove margin for timeline on small screens */
-            }
-
-            .timeline::before {
-                left: 1.5rem;
-                /* Adjust timeline line position */
-            }
-
-            .timeline-item::before {
-                left: -1rem;
-                /* Adjust timeline circle position */
-                top: 2rem;
-                width: 15px;
-                height: 15px;
-                border: 3px solid #f4f7f6;
-                box-shadow: 0 0 0 3px #764ba2;
-            }
-
-            .timeline {
-                padding-left: 2rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            /* Slower and smoother */
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
         }
     </style>
 </head>
 
-<<<<<<< HEAD
 <body class="font-inter bg-dark-950 text-white">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-dark-950/95 backdrop-blur-md border-b border-dark-800 z-50 transition-all duration-300">
@@ -1136,27 +180,10 @@
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
-=======
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">DS</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
         </div>
     </nav>
 
     <!-- Hero Section -->
-<<<<<<< HEAD
     <section id="home" class="min-h-screen flex items-center relative bg-dark-950 overflow-hidden pt-20">
         <!-- Background Geometric Shapes -->
         <div class="absolute inset-0 opacity-20">
@@ -1200,25 +227,11 @@
                         <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-300 rounded-full"></div>
                     </div>
                 </div>
-=======
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Dhivya S</h1>
-            <p>Computer Science Engineer | Full Stack Developer</p>
-            <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                <!-- New: Download Resume Button -->
-                <a href="Dhivya Resume.pdf" class="btn btn-secondary" download="Dhivya_S_Resume.pdf">
-                    Download Resume <i class="fas fa-download"></i>
-                </a>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-<<<<<<< HEAD
     <section id="about" class="py-24 bg-dark-900">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -1328,48 +341,11 @@
                         </div>
                     </div>
                 </div>
-=======
-    <section id="about" class="section">
-        <h2 class="section-title fade-in">About Me</h2>
-        <div class="about-content fade-in">
-            <div class="about-image">
-                <div class="profile-img">
-                    <img src="224009.jpg" alt="Dhivya S Profile Photo" class="actual-profile-photo">
-                </div>
-            </div>
-            <div class="about-text">
-                <p>I'm a passionate Computer Science student with a strong foundation in web and mobile app development,
-                    machine learning, and emerging technologies. Currently pursuing my Bachelor's degree at K.L.N.
-                    College of Engineering with a stellar 9.00 CGPA.</p>
-
-                <p>My expertise spans across modern web technologies like React.js, mobile development with Flutter, and
-                    AI/ML implementations using Python and TensorFlow. I'm driven by the desire to create innovative,
-                    user-friendly solutions that make a real impact.</p>
-
-                <p>When I'm not coding, you'll find me exploring the latest in AI technology, participating in
-                    hackathons, or sharing my knowledge through speaking engagements and technical presentations.</p>
-            </div>
-        </div>
-
-        <div class="stats fade-in">
-            <div class="stat-item">
-                <span class="stat-number">9.00</span>
-                <span>CGPA</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">5</span>
-                <span>Projects Completed</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">5+</span>
-                <span>Technologies Mastered</span>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-<<<<<<< HEAD
     <section id="skills" class="py-24 bg-dark-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -1509,112 +485,6 @@
                             <img src="assets/git.png" alt="Git" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
                             <span class="text-sm font-semibold text-gray-300 text-center">Git</span>
                         </div>
-=======
-    <section id="skills" class="section">
-        <h2 class="section-title fade-in">Technical Skills</h2>
-        <div class="skills-grid fade-in">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Web Technologies</h3>
-                <div class="skills-list">
-                    <div class="skill-icon-item">
-                        <img src="assets/html.png" alt="HTML5">
-                        <span class="skill-label">HTML5</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/css.png" alt="CSS3">
-                        <span class="skill-label">CSS3</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/tailwind css.png" alt="Tailwind CSS">
-                        <span class="skill-label">Tailwind CSS</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/bootstrap.png" alt="Bootstrap">
-                        <span class="skill-label">Bootstrap</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/js.png" alt="JavaScript">
-                        <span class="skill-label">JavaScript</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/node.js.png" alt="Node.js">
-                        <span class="skill-label">Node.js</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/react.png" alt="React.js">
-                        <span class="skill-label">React.js</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-laptop-code"></i> Programming & ML</h3>
-                <div class="skills-list">
-                    <div class="skill-icon-item">
-                        <img src="assets/python.png" alt="Python">
-                        <span class="skill-label">Python</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/c.png" alt="C Programming">
-                        <span class="skill-label">C Programming</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/tensorflow.png" alt="TensorFlow">
-                        <span class="skill-label">TensorFlow</span>
-                    </div>
-                    
-                    <div class="skill-icon-item">
-                        <img src="assets/machine learning.png" alt="Machine Learning">
-                        <span class="skill-label">Machine Learning</span>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-mobile-alt"></i> Mobile & Cloud</h3>
-                <div class="skills-list">
-                    <div class="skill-icon-item">
-                        <img src="assets/flutter.png" alt="Flutter">
-                        <span class="skill-label">Flutter</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/firebase.png" alt="Firebase">
-                        <span class="skill-label">Firebase</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/google drive api.png" alt="Google Drive API">
-                        <span class="skill-label">Google Drive API</span>
-                    </div>
-                    
-                    <div class="skill-icon-item">
-                        <img src="assets/face-api.png" alt="Face-API.js">
-                        <span class="skill-label">Face-API.js</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Tools & Soft Skills</h3>
-                <div class="skills-list">
-                    <div class="skill-icon-item">
-                        <img src="assets/git.png" alt="Git">
-                        <span class="skill-label">Git</span>
-                    </div>
-                    
-                    <div class="skill-icon-item">
-                        <img src="assets/problem solving.png" alt="Problem Solving">
-                        <span class="skill-label">Problem Solving</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/leadership.png" alt="Leadership">
-                        <span class="skill-label">Leadership</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/team player.png" alt="Team Player">
-                        <span class="skill-label">Team Player</span>
-                    </div>
-                    <div class="skill-icon-item">
-                        <img src="assets/communication skills.png" alt="Communication Skills">
-                        <span class="skill-label">Communication Skills</span>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
                     </div>
                 </div>
             </div>
@@ -1622,7 +492,6 @@
     </section>
 
     <!-- Projects Section -->
-<<<<<<< HEAD
     <section id="projects" class="py-24 bg-dark-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -1832,135 +701,11 @@
                         <p class="text-gray-300 mb-6 text-center leading-relaxed">Comprehensive embedded system with multiple sensors for detecting rain, earthquakes, fire, and laser-based intrusions.</p>
                     </div>
                 </div>
-=======
-    <section id="projects" class="section">
-        <h2 class="section-title fade-in">Featured Projects</h2>
-        <div class="projects-grid fade-in">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">AI Sign Language Conversion</div>
-                </div>
-                <div class="project-content">
-                    <p>Real-time gesture recognition app that converts sign language into speech for inclusive
-                        communication, making technology more accessible.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">TensorFlow Lite</span>
-                        <span class="tech-tag">Machine Learning</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">Facevault - Cloud Storage</div>
-                </div>
-                <div class="project-content">
-                    <p>Innovative web application using face recognition for secure authentication and cloud-based file
-                        storage system.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Face-API.js</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Google Drive API</span>
-                    </div>
-                    <a href="https://keen-unicorn-fe6d06.netlify.app/" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">Career Sense</div>
-                </div>
-                <div class="project-content">
-                    <p>AI-powered career guidance assistant that provides personalized recommendations by analyzing
-                        academic data and interests.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">AI Backend</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">TerNova - Mental Health App</div>
-                </div>
-                <div class="project-content">
-                    <p>Personalized mental health support application using GenAI to analyze user moods and provide
-                        empathetic responses.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">GenAI</span>
-                        <span class="tech-tag">Mood Analysis</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">REFL Security System</div>
-                </div>
-                <div class="project-content">
-                    <p>Comprehensive embedded system with multiple sensors for detecting rain, earthquakes, fire, and
-                        laser-based intrusions, sending real-time alerts for safety and security.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">IoT Sensors</span>
-                        <span class="tech-tag">Embedded Systems</span>
-                        <span class="tech-tag">Real-time Alerts</span>
-                    </div>
-                </div>
-            </div>
-            <!-- Portfolio Project Card - added from resume content -->
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-title">Personal Portfolio Website</div>
-                </div>
-                <div class="project-content">
-                    <p>An ongoing project showcasing my skills, projects, and achievements in a professional and
-                        interactive web format.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                    </div>
-                    <!-- Assuming this portfolio will be live at some point, you can add your future live link here -->
-                    <a href="https://dhivyaselvam-portfolio.netlify.app/" class="project-link" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> View Code (or Live)
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section id="experience" class="section">
-        <h2 class="section-title fade-in">Experience & Education</h2>
-        <div class="timeline fade-in">
-            <div class="timeline-item">
-                <div class="timeline-date">Dec 2024 - Jan 2025</div>
-                <div class="timeline-title">Frontend Developer Intern</div>
-                <div class="timeline-company">Dot Com Infoway Ltd, Madurai</div>
-                <p>Developed responsive web interfaces using HTML, CSS, Tailwind CSS, React.js, and Bootstrap. Enhanced
-                    user experience through dynamic JavaScript features and collaborated using Git for version control.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - 2026</div>
-                <div class="timeline-title">Bachelor of Engineering - Computer Science and Engineering</div>
-                <div class="timeline-company">K.L.N. College of Engineering</div>
-                <p>Acquired solid skills in computer programming, software development, and creating novel technological
-                    solutions. Currently maintaining a 9.00 CGPA.</p>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
             </div>
         </div>
     </section>
 
     <!-- Achievements Section -->
-<<<<<<< HEAD
     <section id="achievements" class="py-24 bg-dark-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -2130,57 +875,11 @@
                         <span class="px-2 py-1 bg-pink-400/20 text-pink-400 rounded-full text-xs font-semibold">2024-25</span>
                     </div>
                 </div>
-=======
-    <section id="achievements" class="section">
-        <h2 class="section-title fade-in">Achievements & Recognition</h2>
-        <div class="achievements-grid fade-in">
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
-                <h3>ICT Academy Youth Talk Finalist</h3>
-                <p>Finalist (2023); Speaker (2023 & 2024)</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-star"></i></div>
-                <h3>Best Performer Award</h3>
-                <p>Awarded in 2022-2023 for academics, leadership, and participation</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-newspaper"></i></div>
-                <h3>Research Publication</h3>
-                <p>Presented Neo Sign Vision at SITCON Trade Expo and published in IJERT (2025)</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-code-branch"></i></div>
-                <h3>Smart India Hackathon</h3>
-                <p>Selected for internal rounds in 2023 & 2024</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-industry"></i></div>
-                <h3>Participated in CII Connect Madurai 2024</h3>
-                <p>Engaged in industry-academia interaction</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                <h3>Research Presentation</h3>
-                <p>Presented IoT Sensor Fusion at ICON: ENIAS'25</p>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
-                <h3>NPTEL Certifications</h3>
-                <p>Cloud Computing (75%, Silver Medal) and Online Privacy (70%)</p>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-<<<<<<< HEAD
     <section id="contact" class="py-24 bg-dark-950">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -2252,58 +951,10 @@
                     </div>
                 </div>
             </div>
-=======
-    <section id="contact" class="section">
-        <h2 class="section-title fade-in">Get In Touch</h2>
-        <div class="contact-content fade-in">
-            <div class="contact-info">
-                <h3>Let's Connect!</h3>
-                <p>I'm always excited to discuss new opportunities, collaborate on innovative projects, or just have a
-                    chat about technology and AI.</p>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <div>
-                        <strong>Email</strong><br>
-                        dhivyaselvam2005@gmail.com
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <strong>Phone</strong><br>
-                        +91 8526366761
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <strong>Location</strong><br>
-                        Madurai, Tamil Nadu, India
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/dhivya-selvam-29a30427a" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/subudhiv" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:dhivyaselvam2005@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-            <!-- Removed the "What I'm Looking For" container -->
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
         </div>
     </section>
-
+                
     <!-- Footer -->
-<<<<<<< HEAD
     <footer class="bg-gradient-to-r from-dark-950 to-dark-900 text-white py-12 relative overflow-hidden">
         <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
         <div class="max-w-7xl mx-auto px-6 text-center">
@@ -2312,34 +963,17 @@
     </footer>
 
     <!-- JavaScript -->
-=======
-    <footer>
-        <p>&copy; 2025 Dhivya S. Crafted with passion and code. All rights reserved.</p>
-    </footer>
-
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-<<<<<<< HEAD
                 e.preventDefault();
-=======
-                e.preventDefault(); // Prevent default anchor click behavior
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-<<<<<<< HEAD
                     const navbarHeight = document.querySelector('nav').offsetHeight;
                     const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-=======
-                    // Get the height of the fixed navigation bar
-                    const navbarHeight = document.querySelector('nav').offsetHeight;
-                    // Calculate the target position with an offset for the navbar
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 20; // Added extra padding
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
 
                     window.scrollTo({
                         top: targetPosition,
@@ -2349,7 +983,6 @@
             });
         });
 
-<<<<<<< HEAD
         // Scroll animations
         const observerOptions = {
             root: null,
@@ -2361,27 +994,10 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-fade-in-up');
-=======
-        // Scroll animations (fade-in) using Intersection Observer
-        const fadeInElements = document.querySelectorAll('.fade-in');
-
-        const observerOptions = {
-            root: null, // relative to the viewport
-            rootMargin: '0px',
-            threshold: 0.1 // trigger when 10% of the item is visible
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
                 }
             });
         }, observerOptions);
 
-<<<<<<< HEAD
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
@@ -2401,7 +1017,7 @@
 
         // Active navigation link
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -2413,32 +1029,12 @@
             });
 
             navLinks.forEach(link => {
-                link.classList.remove('text-primary-600', 'bg-primary-100');
+                link.classList.remove('text-primary-500');
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('text-primary-600', 'bg-primary-100');
+                    link.classList.add('text-primary-500');
                 }
             });
         });
-
     </script>
 </body>
 </html>
-=======
-        fadeInElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Add class to nav on scroll (optional: for subtle styling changes)
-        // window.addEventListener('scroll', () => {
-        //     const nav = document.querySelector('nav');
-        //     if (window.scrollY > 50) {
-        //         nav.classList.add('scrolled'); // Define 'scrolled' class in CSS if needed
-        //     } else {
-        //         nav.classList.remove('scrolled');
-        //     }
-        // });
-    </script>
-</body>
-
-</html>
->>>>>>> 6f001b9c198cef9f9623dd245d5f1245755d5e27
