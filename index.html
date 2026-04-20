@@ -1,1040 +1,1218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhivya S - Portfolio</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            300: '#86efac',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
-                        },
-                        dark: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
-                        }
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out',
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'scroll': 'scroll 30s linear infinite',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                        scroll: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Custom CSS for Logo Loop -->
-    <style>
-        .skills-loop-container {
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .skills-loop {
-            animation: scroll 30s linear infinite;
-            width: max-content;
-        }
-        
-        .skills-loop:hover {
-            animation-play-state: paused;
-        }
-        
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        /* Pause animation on hover for better UX */
-        .skill-item:hover {
-            transform: scale(1.05);
-        }
-    </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhivya Selvakumar — Business Analyst & Frontend Developer</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   RESET & ROOT VARIABLES
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #22c55e;
+  --green-dim: #16a34a;
+  --green-glow: rgba(34, 197, 94, 0.18);
+  --green-pale: rgba(34, 197, 94, 0.08);
+  --ink: #f8fafc;
+  --ink-2: #cbd5e1;
+  --ink-3: #94a3b8;
+  --bg: #050a0e;
+  --bg-2: #0a1218;
+  --bg-3: #0f1b24;
+  --bg-4: #152030;
+  --border: rgba(255,255,255,0.06);
+  --border-green: rgba(34,197,94,0.2);
+  --radius: 16px;
+  --radius-lg: 24px;
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --nav-h: 72px;
+  --max-w: 1320px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; cursor: none; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; cursor: none; }
+
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════ */
+#cursor-dot {
+  position: fixed; width: 8px; height: 8px;
+  background: var(--green); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+#cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid var(--green); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+  opacity: 0.7;
+}
+body.cursor-hover #cursor-dot { width: 12px; height: 12px; background: var(--green); }
+body.cursor-hover #cursor-ring { width: 52px; height: 52px; border-color: var(--green); opacity: 1; }
+body.cursor-click #cursor-dot { transform: translate(-50%,-50%) scale(0.6); }
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 99px; }
+
+/* ═══════════════════════════════════════════
+   NOISE OVERLAY
+═══════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(5,10,14,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: var(--nav-h);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+nav.scrolled { background: rgba(5,10,14,0.97); box-shadow: 0 4px 32px rgba(0,0,0,0.5); }
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: var(--font-display); font-size: 1.35rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.nav-logo span { color: var(--green); }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-3); text-decoration: none;
+  position: relative; transition: color var(--transition);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+  background: var(--green); transition: width var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  padding: 0.55rem 1.4rem; background: var(--green); color: #050a0e !important;
+  font-weight: 700 !important; border-radius: 99px; letter-spacing: 0.03em;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+}
+.nav-cta:hover { background: #4ade80 !important; transform: translateY(-1px) !important; box-shadow: 0 6px 24px var(--green-glow); }
+.nav-cta::after { display: none !important; }
+.nav-socials { display: flex; gap: 1rem; align-items: center; }
+.nav-socials a { color: var(--ink-3); transition: color var(--transition), transform var(--transition); font-size: 0.9rem; }
+.nav-socials a:hover { color: var(--green); transform: translateY(-2px); }
+.hamburger { display: none; background: none; border: none; color: var(--ink); font-size: 1.2rem; cursor: none; }
+.mobile-menu {
+  display: none; position: absolute; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(5,10,14,0.98); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem;
+  flex-direction: column; gap: 1rem;
+}
+.mobile-menu a { color: var(--ink-2); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.mobile-menu.open { display: flex; }
+@media (max-width: 900px) { .nav-links, .nav-socials { display: none; } .hamburger { display: block; } }
+
+/* ═══════════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.from-left { transform: translateX(-40px); }
+.reveal.from-right { transform: translateX(40px); }
+.reveal.visible { opacity: 1; transform: translate(0); }
+
+/* ═══════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════ */
+section { position: relative; z-index: 1; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 1rem;
+}
+.section-label::before { content: ''; width: 20px; height: 1px; background: var(--green); }
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.8rem);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--green); }
+.section-divider { width: 48px; height: 2px; background: var(--green); margin: 1.5rem 0 3rem; border-radius: 99px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#home {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: var(--nav-h);
+  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(34,197,94,0.04) 0%, transparent 70%);
+}
+.hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-img-col { display: none; } }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1rem; background: var(--green-pale); border: 1px solid var(--border-green);
+  border-radius: 99px; color: var(--green); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.badge-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.6)} 50%{box-shadow:0 0 0 6px rgba(34,197,94,0)} }
+
+.hero-title {
+  font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 1.05; letter-spacing: -0.03em; color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.hero-title .block-green { color: var(--green); display: block; }
+.hero-title .block-dim { color: var(--ink-2); font-style: italic; }
+
+.hero-desc { font-size: 1.05rem; color: var(--ink-3); line-height: 1.75; max-width: 520px; margin-bottom: 2rem; }
+.hero-desc strong { color: var(--ink-2); font-weight: 500; }
+
+.hero-stats { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+.stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.stat-num { font-size: 1.6rem; font-weight: 700; color: var(--green); line-height: 1; font-family: var(--font-mono); }
+.stat-label { font-size: 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+.stat-sep { width: 1px; background: var(--border); align-self: stretch; }
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; background: var(--green); color: #050a0e;
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;
+  border-radius: var(--radius); text-decoration: none;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.btn-primary:hover { background: #4ade80; transform: translateY(-2px); box-shadow: 0 8px 32px var(--green-glow); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; background: transparent;
+  color: var(--ink-2); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;
+  border: 1.5px solid var(--border); border-radius: var(--radius); text-decoration: none;
+  transition: border-color var(--transition), color var(--transition), transform var(--transition);
+}
+.btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+
+/* hero image */
+.hero-img-col { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-img-frame {
+  position: relative; width: 380px; height: 460px;
+}
+.hero-img-bg {
+  position: absolute; inset: 0; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--green), #4ade80 40%, var(--green-dim));
+  transform: rotate(4deg) scale(0.97);
+  animation: float-frame 4s ease-in-out infinite;
+}
+@keyframes float-frame { 0%,100%{transform:rotate(4deg) scale(0.97) translateY(0)} 50%{transform:rotate(4deg) scale(0.97) translateY(-12px)} }
+.hero-img-inner {
+  position: absolute; inset: 0; background: var(--bg-3); border-radius: var(--radius-lg);
+  overflow: hidden; transform: rotate(-2deg);
+  transition: transform 0.5s ease;
+}
+.hero-img-col:hover .hero-img-inner { transform: rotate(-0.5deg) scale(1.01); }
+.hero-img-inner img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Decorative floating cards around hero image */
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about { padding: 7rem 0; background: var(--bg-2); }
+.about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: center; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+.about-img-wrap { position: relative; }
+.about-img-border {
+  position: absolute; inset: -8px; border-radius: calc(var(--radius-lg) + 8px);
+  border: 1.5px solid var(--border-green); animation: rotate-border 8s linear infinite;
+}
+@keyframes rotate-border { 0%{clip-path:inset(0 0 96% 0 round 24px)} 25%{clip-path:inset(0 0 0 96% round 24px)} 50%{clip-path:inset(96% 0 0 0 round 24px)} 75%{clip-path:inset(0 96% 0 0 round 24px)} 100%{clip-path:inset(0 0 96% 0 round 24px)} }
+.about-img { width: 100%; height: 400px; object-fit: cover; object-position: top; border-radius: var(--radius-lg); display: block; }
+.about-text p { font-size: 1rem; color: var(--ink-2); line-height: 1.85; margin-bottom: 1.25rem; }
+.about-text p strong { color: var(--green); font-weight: 600; }
+.about-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.meta-item { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.meta-key { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-bottom: 0.3rem; }
+.meta-val { font-size: 0.9rem; color: var(--ink-2); font-weight: 500; }
+.about-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+/* ═══════════════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════════════ */
+#experience { padding: 7rem 0; background: var(--bg); }
+.exp-grid { display: grid; gap: 1.5rem; margin-top: 3rem; }
+.exp-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem 2.5rem;
+  position: relative; overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.exp-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--green), var(--green-dim));
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.exp-card:hover { border-color: var(--border-green); transform: translateX(4px); box-shadow: 0 4px 32px var(--green-glow); }
+.exp-card:hover::before { transform: scaleY(1); }
+.exp-card.is-edu { border-color: rgba(34,197,94,0.12); }
+.exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.exp-period { font-size: 0.72rem; font-family: var(--font-mono); color: var(--green); font-weight: 500; background: var(--green-pale); padding: 0.3rem 0.75rem; border-radius: 99px; border: 1px solid var(--border-green); white-space: nowrap; }
+.exp-location { font-size: 0.72rem; color: var(--ink-3); font-weight: 500; }
+.exp-role { font-size: 1.15rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.25rem; }
+.exp-company { font-size: 0.9rem; color: var(--green); font-weight: 500; margin-bottom: 1rem; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem; }
+.exp-bullets li { font-size: 0.9rem; color: var(--ink-3); line-height: 1.65; display: flex; gap: 0.6rem; }
+.exp-bullets li::before { content: '▸'; color: var(--green); flex-shrink: 0; margin-top: 0.05rem; font-size: 0.7rem; }
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; background: var(--green-pale); color: var(--green); border: 1px solid var(--border-green); border-radius: 99px; }
+
+/* ═══════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════ */
+#skills { padding: 7rem 0; background: var(--bg-2); }
+.marquee-wrap { overflow: hidden; width: 100%; margin-top: 3rem; position: relative; }
+.marquee-wrap::before, .marquee-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg-2), transparent); }
+.marquee-wrap::after { right: 0; background: linear-gradient(to left, var(--bg-2), transparent); }
+.marquee-track { display: flex; gap: 1rem; width: max-content; animation: marquee 35s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.skill-pill {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1.2rem; background: var(--bg-3);
+  border: 1px solid var(--border); border-radius: 99px;
+  white-space: nowrap; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.skill-pill:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 6px 20px var(--green-glow); }
+.skill-pill img { width: 22px; height: 22px; object-fit: contain; }
+.skill-pill span { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); letter-spacing: 0.03em; }
+
+/* ═══════════════════════════════════════════
+   PROJECTS
+═══════════════════════════════════════════ */
+#projects { padding: 7rem 0; background: var(--bg); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+.project-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  display: flex; flex-direction: column;
+}
+.project-card:hover { border-color: var(--border-green); transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.4); }
+.project-thumb {
+  height: 180px; overflow: hidden; position: relative;
+}
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.project-card:hover .project-thumb img { transform: scale(1.06); }
+.project-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(5,10,14,0.85); border: 1px solid var(--border-green);
+  color: var(--green); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem; border-radius: 99px; backdrop-filter: blur(6px);
+}
+.project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+.project-title { font-size: 1.05rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.project-desc { font-size: 0.85rem; color: var(--ink-3); line-height: 1.7; flex: 1; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.project-footer { display: flex; gap: 0.75rem; padding: 0 1.5rem 1.5rem; }
+.proj-btn {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.6rem 0.9rem; border-radius: var(--radius); font-size: 0.76rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.proj-btn.code { background: var(--bg-4); color: var(--ink-3); border: 1px solid var(--border); }
+.proj-btn.code:hover { color: var(--ink); border-color: var(--border-green); transform: translateY(-1px); }
+.proj-btn.demo { background: var(--green); color: #050a0e; }
+.proj-btn.demo:hover { background: #4ade80; transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════════
+   ACHIEVEMENTS
+═══════════════════════════════════════════ */
+#achievements { padding: 7rem 0; background: var(--bg-2); }
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 3rem; }
+.ach-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem; position: relative;
+  overflow: hidden; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.ach-card:hover { border-color: var(--border-green); transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+.ach-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.ach-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.1rem; }
+.ach-year { position: absolute; top: 1rem; right: 1rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.2rem 0.6rem; border-radius: 99px; }
+.ach-name { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.ach-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact { padding: 7rem 0; background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: start; margin-top: 3rem; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-intro p { font-size: 1rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 1.5rem; }
+.contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.c-link {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem; background: var(--bg-3);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  text-decoration: none; color: var(--ink-2);
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+.c-link:hover { border-color: var(--border-green); transform: translateX(6px); background: var(--bg-4); }
+.c-link-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--green-pale); border: 1px solid var(--border-green);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green); font-size: 0.9rem; flex-shrink: 0;
+  transition: background var(--transition), transform var(--transition);
+}
+.c-link:hover .c-link-icon { background: var(--green); color: #050a0e; transform: rotate(-5deg) scale(1.1); }
+.c-link-info { flex: 1; }
+.c-link-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); font-weight: 600; margin-bottom: 0.2rem; }
+.c-link-val { font-size: 0.88rem; color: var(--ink-2); font-weight: 500; }
+.c-link-arrow { color: var(--ink-3); font-size: 0.75rem; transition: transform var(--transition), color var(--transition); }
+.c-link:hover .c-link-arrow { transform: translateX(3px); color: var(--green); }
+
+/* Contact form card */
+.contact-form-card {
+  background: var(--bg-3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.contact-form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--green), #4ade80); }
+.form-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.form-sub { font-size: 0.82rem; color: var(--ink-3); margin-bottom: 1.75rem; }
+.form-row { display: flex; gap: 1rem; margin-bottom: 1rem; }
+@media (max-width: 600px) { .form-row { flex-direction: column; } }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+.form-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.form-input, .form-textarea {
+  background: var(--bg-4); border: 1px solid var(--border); border-radius: 10px;
+  color: var(--ink); font-family: var(--font-body); font-size: 0.9rem;
+  padding: 0.75rem 1rem; transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none; resize: none; width: 100%;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-pale); }
+.form-textarea { min-height: 100px; }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--ink-3); opacity: 0.5; }
+.form-submit {
+  width: 100%; padding: 0.9rem; margin-top: 0.5rem;
+  background: var(--green); color: #050a0e;
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; border: none;
+  border-radius: var(--radius); cursor: none;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.form-submit:hover { background: #4ade80; transform: translateY(-2px); box-shadow: 0 8px 28px var(--green-glow); }
+.form-success { display: none; text-align: center; padding: 1rem; }
+.form-success .success-icon { font-size: 2rem; color: var(--green); margin-bottom: 0.5rem; }
+.form-success p { color: var(--ink-2); font-size: 0.9rem; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--bg-2); border-top: 1px solid var(--border);
+  padding: 4rem 0 2.5rem; position: relative; z-index: 1;
+}
+.footer-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand {}
+.footer-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); margin-bottom: 0.75rem; }
+.footer-logo span { color: var(--green); }
+.footer-tagline { font-size: 0.85rem; color: var(--ink-3); line-height: 1.7; max-width: 260px; margin-bottom: 1.25rem; }
+.footer-socials { display: flex; gap: 0.75rem; }
+.footer-social-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--bg-3); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-3); text-decoration: none; font-size: 0.85rem;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+.footer-social-btn:hover { background: var(--green-pale); border-color: var(--border-green); color: var(--green); transform: translateY(-3px); }
+
+.footer-col-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 1.25rem; }
+.footer-links { display: flex; flex-direction: column; gap: 0.65rem; list-style: none; }
+.footer-links a { font-size: 0.85rem; color: var(--ink-3); text-decoration: none; transition: color var(--transition), transform var(--transition); display: inline-block; }
+.footer-links a:hover { color: var(--green); transform: translateX(3px); }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.75rem; }
+.footer-contact-icon { color: var(--green); font-size: 0.8rem; margin-top: 0.1rem; flex-shrink: 0; }
+.footer-contact-text { font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+.footer-contact-text a { color: var(--ink-3); text-decoration: none; transition: color var(--transition); }
+.footer-contact-text a:hover { color: var(--green); }
+
+.footer-bottom {
+  border-top: 1px solid var(--border); padding-top: 1.75rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy { font-size: 0.8rem; color: var(--ink-3); }
+.footer-copy span { color: var(--green); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: 0.78rem; color: var(--ink-3); text-decoration: none; transition: color var(--transition); }
+.footer-bottom-links a:hover { color: var(--green); }
+.footer-glow-line { position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
+
+/* ═══════════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════════ */
+#back-top {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--green); color: #050a0e; border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; cursor: none; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 4px 20px var(--green-glow);
+}
+#back-top.visible { opacity: 1; pointer-events: auto; }
+#back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--green-glow); }
+
+/* ═══════════════════════════════════════════
+   SECTION DIVIDERS
+═══════════════════════════════════════════ */
+.sec-header { margin-bottom: 1rem; }
+</style>
 </head>
+<body>
 
-<body class="font-inter bg-dark-950 text-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-dark-950/95 backdrop-blur-md border-b border-dark-800 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Left Side - Name -->
-                <div class="text-2xl font-bold text-white hover:text-primary-500 transition-colors duration-300">
-                    Dhivya Selvakumar
-                </div>
-                
-                <!-- Center - Navigation Links -->
-                <ul class="hidden md:flex space-x-8 items-center">
-                    <li><a href="#home" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#about" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        About
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#experience" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Experience
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#skills" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Skills
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#projects" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Projects
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#achievements" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Achievements
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                    <li><a href="#contact" class="text-white hover:text-primary-500 font-medium text-sm uppercase tracking-wide transition-colors duration-200 relative group">
-                        Contact
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-200 group-hover:w-full"></span>
-                    </a></li>
-                </ul>
-                
-                <!-- Right Side - Social Icons and CTA Button -->
-                <div class="hidden md:flex items-center space-x-6">
-                    <!-- Social Media Icons -->
-                    <div class="flex items-center space-x-4">
-                        <a href="https://www.linkedin.com/in/dhivya-selvam-29a30427a" target="_blank" class="text-white hover:text-primary-500 transition-colors duration-200">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/subudhiv" target="_blank" class="text-white hover:text-primary-500 transition-colors duration-200">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:dhivyaselvam2005@gmail.com" class="text-white hover:text-primary-500 transition-colors duration-200">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://dhivyaselvam-portfolio.netlify.app/" target="_blank" class="text-white hover:text-primary-500 transition-colors duration-200">
-                            <i class="fas fa-folder-open"></i>
-                        </a>
-                    </div>
-                    
-                    <!-- CTA Button -->
-                    <a href="#contact" class="px-6 py-2 bg-primary-500 text-white font-semibold rounded-full hover:bg-primary-600 transition-colors duration-200">
-                        Let's Talk
-                    </a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <button class="md:hidden text-white hover:text-primary-500 transition-colors duration-200">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
+<!-- Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Back to Top -->
+<button id="back-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">Dhivya<span> Selvakumar</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://linkedin.com/in/dhivya-selvakumar-29a30427a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/Dhivyaselvakumar" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:dhivyaselvam2005@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fas fa-bars" id="hamburger-icon"></i></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#home" class="mob-link">Home</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#experience" class="mob-link">Experience</a>
+    <a href="#skills" class="mob-link">Skills</a>
+    <a href="#projects" class="mob-link">Projects</a>
+    <a href="#achievements" class="mob-link">Achievements</a>
+    <a href="#contact" class="mob-link">Contact</a>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge reveal"><span class="badge-dot"></span>Open to Opportunities</div>
+        <h1 class="hero-title reveal" style="transition-delay:0.1s">
+          Business Analyst
+          <span class="block-green">&amp; Frontend</span>
+          <span class="block-dim">Developer.</span>
+        </h1>
+        <p class="hero-desc reveal" style="transition-delay:0.2s">
+          Hi, I'm <strong>Dhivya Selvakumar</strong> — driving growth through data-led digital marketing, full-stack web development, and AI-powered solutions. Currently pursuing B.E. Computer Science at K.L.N. College of Engineering with a <strong>9.0 CGPA</strong>.
+        </p>
+        <div class="hero-stats reveal" style="transition-delay:0.3s">
+          <div class="stat">
+            <div class="stat-num" data-target="3">3+</div>
+            <div class="stat-label">Internships</div>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <div class="stat-num" data-target="6">6+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <div class="stat-num">9.0</div>
+            <div class="stat-label">CGPA</div>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <div class="stat-num">2×</div>
+            <div class="stat-label">SIH Finalist</div>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center relative bg-dark-950 overflow-hidden pt-20">
-        <!-- Background Geometric Shapes -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-20 left-10 w-20 h-20 bg-primary-500 rounded-full blur-sm"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-primary-400 transform rotate-45 blur-sm"></div>
-            <div class="absolute bottom-40 left-1/4 w-12 h-12 bg-primary-600 rounded-full blur-sm"></div>
-            <div class="absolute bottom-20 right-1/3 w-8 h-8 bg-primary-300 transform rotate-12 blur-sm"></div>
-            <div class="absolute top-1/2 left-1/2 w-24 h-24 bg-dark-800 rounded-full blur-md"></div>
+        <div class="hero-actions reveal" style="transition-delay:0.4s">
+          <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
+          <a href="Dhivya_Selvakumar_Resume.pdf" download class="btn-outline"><i class="fas fa-download"></i> Download CV</a>
         </div>
-        
-        <div class="max-w-7xl mx-auto px-6 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Side - Text Content -->
-                <div class="relative z-10 animate-fade-in-up">
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                        <span class="text-white">HELLO, I'M A</span><br>
-                        <span class="text-white">Full Stack</span><br>
-                        <span class="text-primary-500">Developer.</span>
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-                        Hi I'm Dhivya Selvakumar, a passionate Full Stack Developer based in India. Welcome to my portfolio world.
-                    </p>
-                    <a href="#projects" class="inline-block px-8 py-4 bg-primary-500 text-white font-semibold rounded-lg hover:bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg animate-fade-in-up" style="animation-delay: 0.4s;">
-                        VIEW PROJECTS
-                    </a>
-                </div>
-                
-                <!-- Right Side - Image with Green Background -->
-                <div class="relative animate-fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="relative">
-                        <!-- Green Background -->
-                        <div class="absolute inset-0 bg-primary-500 rounded-3xl transform rotate-3"></div>
-                        <!-- Image Container -->
-                        <div class="relative bg-dark-900 rounded-3xl p-4 transform -rotate-3">
-                            <div class="w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden">
-                                <img src="224009.jpg" alt="Dhivya S" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <!-- Decorative Elements -->
-                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-primary-400 rounded-full"></div>
-                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-300 rounded-full"></div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="hero-img-col reveal from-right" style="transition-delay:0.3s">
+        <div class="hero-img-frame">
+          <div class="hero-img-bg"></div>
+          <div class="hero-img-inner">
+            <img src="224009.jpg" alt="Dhivya Selvakumar">
+          </div>
+          <div class="hero-float-card hfc-1">
+            <span class="fc-icon" style="color:#22c55e"><i class="fas fa-chart-line"></i></span>
+            <div><div class="fc-label">Role</div><div class="fc-val">Business Analyst</div></div>
+          </div>
+          <div class="hero-float-card hfc-2">
+            <span class="fc-icon" style="color:#60a5fa"><i class="fas fa-code"></i></span>
+            <div><div class="fc-label">Stack</div><div class="fc-val">React · Next.js</div></div>
+          </div>
+          <div class="hero-float-card hfc-3">
+            <span class="fc-icon" style="color:#f59e0b"><i class="fas fa-graduation-cap"></i></span>
+            <div><div class="fc-label">CGPA</div><div class="fc-val">9.0 / 10</div></div>
+          </div>
+          <div class="hero-float-card hfc-4">
+            <span class="fc-icon" style="color:#a78bfa"><i class="fas fa-brain"></i></span>
+            <div><div class="fc-label">Focus</div><div class="fc-val">AI · ML</div></div>
+          </div>
+          <div class="hero-dot hero-dot-1"></div>
+          <div class="hero-dot hero-dot-2"></div>
+          <div class="hero-dot hero-dot-3"></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-dark-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white relative">
-                    LET ME INTRODUCE MYSELF
-                </h2>
-                <h3 class="text-6xl md:text-7xl font-bold text-primary-500 mb-8">About me</h3>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                <!-- Left Side - Image -->
-                <div class="relative">
-                    <div class="relative inline-block">
-                        <div class="w-80 h-80 rounded-3xl overflow-hidden shadow-2xl mx-auto lg:mx-0">
-                            <img src="224009.jpg" alt="Dhivya S Profile Photo" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Side - Text Content -->
-                <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
-                    <h4 class="text-xl font-bold text-white mb-4">A story of hardwork and perseverance.</h4>
-                    <p class="animate-fade-in-up">I'm a passionate Computer Science student with a strong foundation in web and mobile app development,
-                        machine learning, and emerging technologies. Currently pursuing my Bachelor's degree at K.L.N.
-                        College of Engineering with a stellar 9.00 CGPA.</p>
-
-                    <p class="animate-fade-in-up" style="animation-delay: 0.2s;">My expertise spans across modern web technologies like React.js, mobile development with Flutter, and
-                        AI/ML implementations using Python and TensorFlow. I'm driven by the desire to create innovative,
-                        user-friendly solutions that make a real impact.</p>
-
-                    <p class="animate-fade-in-up" style="animation-delay: 0.4s;">When I'm not coding, you'll find me exploring the latest in AI technology, participating in
-                        hackathons, or sharing my knowledge through speaking engagements and technical presentations.</p>
-                    
-                    <!-- Contact Info -->
-                    <div class="mt-8">
-                        <h5 class="text-lg font-semibold text-white mb-3">Contact</h5>
-                        <p class="text-primary-500">dhivyaselvam2005@gmail.com</p>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                        <a href="#contact" class="px-8 py-3 bg-primary-500 text-white font-semibold rounded-lg hover:bg-primary-600 transition-colors duration-200 text-center">
-                            HIRE ME
-                        </a>
-                        <a href="Dhivyaselvakumar.pdf" download="Dhivya_S_Resume.pdf" class="px-8 py-3 border-2 border-gray-600 text-gray-300 font-semibold rounded-lg hover:border-primary-500 hover:text-primary-500 transition-colors duration-200 text-center">
-                            DOWNLOAD CV
-                        </a>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════ ABOUT ══════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">Get to Know Me</div>
+      <h2 class="section-title">A story of<br><em>hard work</em> &amp; precision.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap reveal from-left">
+        <div class="about-img-border"></div>
+        <img src="224009.jpg" alt="Dhivya Selvakumar" class="about-img">
+      </div>
+      <div class="about-text reveal from-right" style="transition-delay:0.15s">
+        <p>I'm a Computer Science student at <strong>K.L.N. College of Engineering</strong>, maintaining a stellar <strong>9.0 CGPA</strong>, with deep expertise spanning web development, machine learning, AI systems, and digital marketing analytics.</p>
+        <p>As a <strong>Business Analyst at Foster DataWorks</strong>, I plan and execute digital marketing campaigns for USA and local clients — managing SEO, Google Ads, Meta Ads, and Omnisend email marketing with a data-first approach that consistently moves the needle on ROI.</p>
+        <p>My portfolio spans AI-powered accessibility tools, biometric security systems, and ML-driven career guidance platforms. Beyond the screen, I present at conferences, participate in trade expos, and deliver talks at industry events.</p>
+        <div class="about-meta">
+          <div class="meta-item"><div class="meta-key">Education</div><div class="meta-val">B.E. Computer Science</div></div>
+          <div class="meta-item"><div class="meta-key">Institution</div><div class="meta-val">K.L.N. College of Engineering</div></div>
+          <div class="meta-item"><div class="meta-key">Currently</div><div class="meta-val">Business Analyst, Foster DataWorks</div></div>
+          <div class="meta-item"><div class="meta-key">Location</div><div class="meta-val">Madurai, Tamil Nadu, India</div></div>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-dark-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white relative">
-                    Experience & Education
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary-500 rounded-full"></div>
-                </h2>
-            </div>
-            
-            <div class="relative">
-                <div class="absolute left-8 top-0 bottom-0 w-1 bg-primary-500 rounded-full"></div>
-                
-                <div class="space-y-12">
-                    <!-- Experience 1 -->
-                    <div class="relative flex items-start">
-                        <div class="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg"></div>
-                        <div class="ml-16 bg-dark-900 rounded-2xl p-8 shadow-lg border border-dark-800 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                                <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold border border-primary-200 inline-block w-fit mb-2 sm:mb-0">Sep 2025 - Nov 2025</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Software Product Development Intern</h3>
-                            <p class="text-gray-300 mb-4 font-medium">Adishtu Tec Lab, Madurai</p>
-                            <p class="text-gray-300 leading-relaxed">Worked on software product development for <a href="https://salestracklive.com/" target="_blank" class="text-primary-400 hover:text-primary-300 underline transition-colors duration-200">salestracklive.com</a> as a paid intern. Gained hands-on experience with React, React Native, Supabase, and Canva for real-time software development and design. Collaborated with the team to design user-friendly solutions and participated in the project launch at CODISSIA (October 9-10, 2025).</p>
-                        </div>
-                    </div>
-
-                    <!-- Experience 2 -->
-                    <div class="relative flex items-start">
-                        <div class="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg"></div>
-                        <div class="ml-16 bg-dark-900 rounded-2xl p-8 shadow-lg border border-dark-800 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                                <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold border border-primary-200 inline-block w-fit mb-2 sm:mb-0">Dec 2024 - Jan 2025</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Frontend Developer Intern</h3>
-                            <p class="text-gray-300 mb-4 font-medium">Dot Com Infoway Ltd, Madurai</p>
-                            <p class="text-gray-300 leading-relaxed">Developed responsive web interfaces using HTML, CSS, Tailwind CSS, React.js, and Bootstrap. Enhanced user experience through dynamic JavaScript features and collaborated using Git for version control.</p>
-                        </div>
-                    </div>
-
-                    <!-- Education -->
-                    <div class="relative flex items-start">
-                        <div class="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg"></div>
-                        <div class="ml-16 bg-dark-900 rounded-2xl p-8 shadow-lg border border-dark-800 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                            <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                                <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-sm font-semibold border border-primary-200 inline-block w-fit mb-2 sm:mb-0">2022 - 2026</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">Bachelor of Engineering - Computer Science and Engineering</h3>
-                            <p class="text-gray-300 mb-4 font-medium">K.L.N. College of Engineering</p>
-                            <p class="text-gray-300 leading-relaxed">Acquired solid skills in computer programming, software development, and creating novel technological solutions. Currently maintaining a 9.00 CGPA.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="about-actions">
+          <a href="#contact" class="btn-primary">Hire Me</a>
+          <a href="Dhivya_Selvakumar_Resume.pdf" download class="btn-outline"><i class="fas fa-download"></i> Download CV</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-dark-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white relative">
-                    Technical Skills
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary-500 rounded-full"></div>
-                </h2>
-            </div>
-            
-            <!-- Logo Loop Container -->
-            <div class="relative overflow-hidden bg-dark-900 rounded-2xl p-8 border border-dark-800">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-                
-                <!-- Skills Loop -->
-                <div class="skills-loop-container">
-                    <div class="skills-loop flex gap-8 items-center">
-                        <!-- First set of skills -->
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/html.png" alt="HTML5" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">HTML5</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/css.png" alt="CSS3" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">CSS3</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/tailwind css.png" alt="Tailwind CSS" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Tailwind CSS</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/bootstrap.png" alt="Bootstrap" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Bootstrap</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/js.png" alt="JavaScript" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">JavaScript</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/node.js.png" alt="Node.js" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Node.js</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/react.png" alt="React.js" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">React.js</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/python.png" alt="Python" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Python</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/c.png" alt="C Programming" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">C Programming</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/tensorflow.png" alt="TensorFlow" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">TensorFlow</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/machine learning.png" alt="Machine Learning" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Machine Learning</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/flutter.png" alt="Flutter" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Flutter</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/firebase.png" alt="Firebase" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Firebase</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/supabase.png" alt="Supabase" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Supabase</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/git.png" alt="Git" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Git</span>
-                        </div>
-                        
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/html.png" alt="HTML5" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">HTML5</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/css.png" alt="CSS3" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">CSS3</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/tailwind css.png" alt="Tailwind CSS" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Tailwind CSS</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/bootstrap.png" alt="Bootstrap" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Bootstrap</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/js.png" alt="JavaScript" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">JavaScript</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/node.js.png" alt="Node.js" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Node.js</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/react.png" alt="React.js" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">React.js</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/python.png" alt="Python" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Python</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/c.png" alt="C Programming" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">C Programming</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/tensorflow.png" alt="TensorFlow" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">TensorFlow</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/machine learning.png" alt="Machine Learning" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Machine Learning</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/flutter.png" alt="Flutter" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Flutter</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/firebase.png" alt="Firebase" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Firebase</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/supabase.png" alt="Supabase" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Supabase</span>
-                        </div>
-                        <div class="skill-item flex flex-col items-center p-4 rounded-xl bg-dark-800 hover:bg-dark-700 hover:shadow-md transition-all duration-200 group min-w-[120px]">
-                            <img src="assets/git.png" alt="Git" class="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-200">
-                            <span class="text-sm font-semibold text-gray-300 text-center">Git</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════ EXPERIENCE ══════════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">Career Journey</div>
+      <h2 class="section-title">Experience &amp;<br><em>Education</em></h2>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card reveal" style="transition-delay:0s">
+        <div class="exp-top">
+          <span class="exp-period">Nov 2025 — Ongoing</span>
+          <span class="exp-location"><i class="fas fa-map-marker-alt"></i> Coimbatore</span>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-dark-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white relative">
-                    Featured Projects
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary-500 rounded-full"></div>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl mb-6 flex items-center justify-center shadow-md overflow-hidden">
-                            <img src="assets/ai.png" alt="AI Sign Language Conversion" class="w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">AI Sign Language Conversion</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">Real-time gesture recognition app that converts sign language into speech for inclusive communication, making technology more accessible.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
-                            <!-- Futuristic background effects -->
-                            <div class="absolute inset-0 opacity-20">
-                                <div class="absolute top-4 left-4 w-2 h-2 bg-blue-300 rounded-full animate-pulse"></div>
-                                <div class="absolute top-8 right-6 w-1 h-1 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-                                <div class="absolute bottom-6 left-8 w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-                                <div class="absolute bottom-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-                            </div>
-                            <img src="./assets/face.png" alt="FaceVault Cloud Storage" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">FaceVault - Cloud Storage</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">Innovative web application using face recognition for secure authentication and cloud-based file storage system.</p>
-                        
-                        <!-- Action Buttons -->
-                        <div class="flex gap-3">
-                            <a href="https://github.com/subudhiv/Face-app.git" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors duration-200 font-semibold">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                            <a href="https://keen-unicorn-fe6d06.netlify.app/" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-xl hover:from-pink-600 hover:to-orange-600 transition-all duration-200 font-semibold">
-                                <i class="fas fa-play"></i>
-                                Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-green-600 via-green-700 to-green-900 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
-                            <!-- Futuristic background effects -->
-                            <div class="absolute inset-0 opacity-20">
-                                <div class="absolute top-4 left-4 w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
-                                <div class="absolute top-8 right-6 w-1 h-1 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-                                <div class="absolute bottom-6 left-8 w-1.5 h-1.5 bg-green-300 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-                                <div class="absolute bottom-4 right-4 w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-                            </div>
-                            <img src="assets/career.png" alt="Career Sense AI Career Guidance" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">Career Sense</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">AI-powered career guidance assistant that provides personalized recommendations by analyzing academic data and interests.</p>
-                        
-                        <!-- Action Button -->
-                        <div class="flex justify-center">
-                            <a href="https://github.com/subudhiv/CareerSense.git" target="_blank" class="flex items-center justify-center gap-2 px-8 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors duration-200 font-semibold">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-purple-100 to-purple-200 rounded-2xl mb-6 flex items-center justify-center shadow-md overflow-hidden">
-                            <img src="assets/edu.png" alt="EduAdvisor AI Career Guidance" class="w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">EduAdvisor - AI Career Guidance</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">A comprehensive web-based platform that guides students in choosing the right career path after 12th grade using AI-driven recommendations.</p>
-                        
-                        <!-- Action Buttons -->
-                        <div class="flex gap-3">
-                            <a href="https://github.com/subudhiv/edu.git" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors duration-200 font-semibold">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                            <a href="https://eduadvisor.netlify.app/" target="_blank" class="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-500 to-orange-500 text-white rounded-xl hover:from-pink-600 hover:to-orange-600 transition-all duration-200 font-semibold">
-                                <i class="fas fa-play"></i>
-                                Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-pink-600 via-pink-700 to-pink-900 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
-                            <!-- Futuristic background effects -->
-                            <div class="absolute inset-0 opacity-20">
-                                <div class="absolute top-4 left-4 w-2 h-2 bg-pink-300 rounded-full animate-pulse"></div>
-                                <div class="absolute top-8 right-6 w-1 h-1 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-                                <div class="absolute bottom-6 left-8 w-1.5 h-1.5 bg-pink-300 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-                                <div class="absolute bottom-4 right-4 w-2 h-2 bg-pink-400 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-                            </div>
-                            <img src="assets/ter.png" alt="TerNova Mental Health App" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">TerNova - Mental Health App</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">Personalized mental health support application using GenAI to analyze user moods and provide empathetic responses.</p>
-                        
-                        <!-- Action Button -->
-                        <div class="flex justify-center">
-                            <a href="https://github.com/subudhiv/TerNova" target="_blank" class="flex items-center justify-center gap-2 px-8 py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors duration-200 font-semibold">
-                                <i class="fab fa-github"></i>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="bg-dark-800 rounded-3xl p-8 relative group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 project-card border border-dark-700">
-                    <!-- Gradient Border -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 rounded-3xl p-0.5">
-                        <div class="bg-dark-800 rounded-3xl h-full w-full"></div>
-                    </div>
-                    
-                    <!-- Content -->
-                    <div class="relative z-10">
-                        <!-- Project Image -->
-                        <div class="w-full h-48 bg-gradient-to-br from-red-600 via-red-700 to-red-900 rounded-2xl mb-6 shadow-lg relative overflow-hidden">
-                            <!-- Futuristic background effects -->
-                            <div class="absolute inset-0 opacity-20">
-                                <div class="absolute top-4 left-4 w-2 h-2 bg-red-300 rounded-full animate-pulse"></div>
-                                <div class="absolute top-8 right-6 w-1 h-1 bg-red-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-                                <div class="absolute bottom-6 left-8 w-1.5 h-1.5 bg-red-300 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-                                <div class="absolute bottom-4 right-4 w-2 h-2 bg-red-400 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-                            </div>
-                            <img src="./assets/refl.png" alt="REFL Security System" class="absolute inset-0 w-full h-full object-cover rounded-2xl">
-                        </div>
-                        
-                        <!-- Title -->
-                        <h3 class="text-2xl font-bold text-white mb-3 text-center">REFL Security System</h3>
-                        
-                        <!-- Description -->
-                        <p class="text-gray-300 mb-6 text-center leading-relaxed">Comprehensive embedded system with multiple sensors for detecting rain, earthquakes, fire, and laser-based intrusions.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="exp-role">Business Analyst</div>
+        <div class="exp-company">Foster DataWorks Pvt Ltd</div>
+        <ul class="exp-bullets">
+          <li>Executed digital marketing analytics for USA client (Marsidian) and local clients — managing SEO, Google Ads, and Meta Ads campaigns end-to-end.</li>
+          <li>Planned and deployed email marketing automation via Omnisend, including audience segmentation and drip campaigns.</li>
+          <li>Analysed campaign metrics (CTR, open rate, ROAS) to identify performance gaps and implement data-driven optimisations.</li>
+          <li>Created SOPs to standardise workflows and measurably improve operational efficiency across teams.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">SEO</span><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Omnisend</span><span class="tag">Analytics</span><span class="tag">SOP Design</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="py-24 bg-dark-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white relative">
-                    Achievements & Recognition
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary-500 rounded-full"></div>
-                </h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Achievement 1 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-trophy text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">ICT Academy Youth Talk Finalist</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Finalist (2023); Speaker (2023 & 2024)</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-yellow-400/20 text-yellow-400 rounded-full text-xs font-semibold">2023-24</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 2 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-star text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">Best Performer Award</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Awarded in 2022-2023 for academics, leadership, and participation</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-blue-400/20 text-blue-400 rounded-full text-xs font-semibold">2022-23</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 3 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 to-green-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-newspaper text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">Research Publication</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Presented Neo Sign Vision at SITCON Trade Expo and published in IJERT (2025)</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-green-400/20 text-green-400 rounded-full text-xs font-semibold">2025</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 4 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">FaceVault Presentation</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Presented FaceVault (2nd IRP Project) at MITCON</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-teal-400/20 text-teal-400 rounded-full text-xs font-semibold">2025</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 5 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-400 to-red-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-code-branch text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">Smart India Hackathon</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Selected for internal rounds in 2023 & 2024</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-red-400/20 text-red-400 rounded-full text-xs font-semibold">2023-24</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 6 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-indigo-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-industry text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">CII Connect Madurai 2024</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Engaged in industry-academia interaction</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-indigo-400/20 text-indigo-400 rounded-full text-xs font-semibold">2024</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 7 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 to-teal-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-chalkboard-teacher text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">Research Presentation</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Presented IoT Sensor Fusion at ICON: ENIAS'25</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-teal-400/20 text-teal-400 rounded-full text-xs font-semibold">2025</span>
-                    </div>
-                </div>
-
-                <!-- Achievement 8 -->
-                <div class="bg-dark-800 rounded-2xl p-6 group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-dark-700 relative overflow-hidden">
-                    <!-- Accent Line -->
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 to-pink-600"></div>
-                    
-                    <!-- Icon Container -->
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                        <i class="fas fa-certificate text-white text-2xl"></i>
-                    </div>
-                    
-                    <!-- Content -->
-                    <h3 class="text-lg font-bold text-white mb-2 text-center">NPTEL Certifications</h3>
-                    <p class="text-gray-300 text-sm text-center leading-relaxed">Cloud Computing (75%, Silver Medal) and Online Privacy (70%)</p>
-                    
-                    <!-- Year Badge -->
-                    <div class="absolute top-4 right-4">
-                        <span class="px-2 py-1 bg-pink-400/20 text-pink-400 rounded-full text-xs font-semibold">2024-25</span>
-                    </div>
-                </div>
-            </div>
+      <div class="exp-card reveal" style="transition-delay:0.1s">
+        <div class="exp-top">
+          <span class="exp-period">Sep 2025 — Nov 2025</span>
+          <span class="exp-location"><i class="fas fa-map-marker-alt"></i> Madurai</span>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-dark-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl font-bold mb-6 text-white relative">
-                    Get In Touch
-                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary-500 rounded-full"></div>
-                </h2>
-            </div>
-            
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-dark-900 rounded-2xl p-12 shadow-xl border border-dark-800 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-                    
-                    <div class="text-center mb-8">
-                        <h3 class="text-3xl font-bold text-primary-500 mb-4">
-                            Let's Connect!
-                        </h3>
-                        <p class="text-lg text-gray-300 leading-relaxed">
-                            I'm always excited to discuss new opportunities, collaborate on innovative projects, or just have a chat about technology and AI.
-                        </p>
-                    </div>
-
-                    <div class="space-y-6">
-                        <!-- Email -->
-                        <div class="flex items-center p-4 rounded-xl hover:bg-dark-800 transition-colors duration-200 group">
-                            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition-transform duration-200">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="ml-6">
-                                <div class="text-lg font-bold text-white">Email</div>
-                                <div class="text-gray-300">dhivyaselvam2005@gmail.com</div>
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="flex items-center p-4 rounded-xl hover:bg-dark-800 transition-colors duration-200 group">
-                            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition-transform duration-200">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="ml-6">
-                                <div class="text-lg font-bold text-white">Phone</div>
-                                <div class="text-gray-300">+91 8526366761</div>
-                            </div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="flex items-center p-4 rounded-xl hover:bg-dark-800 transition-colors duration-200 group">
-                            <div class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg group-hover:scale-110 transition-transform duration-200">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="ml-6">
-                                <div class="text-lg font-bold text-white">Location</div>
-                                <div class="text-gray-300">Madurai, Tamil Nadu, India</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="flex justify-center space-x-6 mt-12">
-                        <a href="https://www.linkedin.com/in/dhivya-selvam-29a30427a" target="_blank" class="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/subudhiv" target="_blank" class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:dhivyaselvam2005@gmail.com" class="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="exp-role">Software Product Development Intern</div>
+        <div class="exp-company">Adishtu Tec Lab</div>
+        <ul class="exp-bullets">
+          <li>Designed and shipped 3+ production features for <a href="https://salestracklive.com/" target="_blank" style="color:var(--green)">SalesTrackLive</a> — a B2B sales tracking SaaS — using Next.js (frontend) and Supabase (backend).</li>
+          <li>Contributed to a successful product launch at CODISSIA Trade Expo, Coimbatore.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">B2B SaaS</span><span class="tag">Canva</span>
         </div>
-    </section>
-                
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-dark-950 to-dark-900 text-white py-12 relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-1 bg-primary-500"></div>
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-lg opacity-90">&copy; 2025 Dhivya S. Crafted with passion and code. All rights reserved.</p>
+      </div>
+
+      <div class="exp-card reveal" style="transition-delay:0.2s">
+        <div class="exp-top">
+          <span class="exp-period">Dec 2024 — Jan 2025</span>
+          <span class="exp-location"><i class="fas fa-map-marker-alt"></i> Madurai</span>
         </div>
-    </footer>
+        <div class="exp-role">Frontend Developer Intern</div>
+        <div class="exp-company">Dot Com Infoway Ltd</div>
+        <ul class="exp-bullets">
+          <li>Developed responsive UI components using HTML, CSS, React, and JavaScript for live client projects.</li>
+          <li>Implemented dynamic forms and real-time content updates via React hooks, improving user engagement and reducing page load friction.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Tailwind CSS</span>
+        </div>
+      </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+      <div class="exp-card is-edu reveal" style="transition-delay:0.3s">
+        <div class="exp-top">
+          <span class="exp-period">2022 — 2026</span>
+          <span class="exp-location"><i class="fas fa-map-marker-alt"></i> Sivagangai</span>
+        </div>
+        <div class="exp-role">B.E. Computer Science &amp; Engineering</div>
+        <div class="exp-company">K.L.N. College of Engineering</div>
+        <ul class="exp-bullets">
+          <li>Maintaining a CGPA of <strong style="color:var(--green)">9.0</strong> across coursework in software engineering, machine learning, AI systems, and full-stack development.</li>
+          <li>Recognised with the Best Performer Award (2022–23) and an NPTEL Silver Medal for Cloud Computing.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">⭐ CGPA 9.0</span><span class="tag">NPTEL Silver Medal</span><span class="tag">Best Performer Award</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('nav').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+<!-- ══════════════ SKILLS ══════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">Technical Toolkit</div>
+      <h2 class="section-title">Skills &amp;<br><em>Technologies</em></h2>
+    </div>
+  </div>
+  <div class="marquee-wrap reveal" style="transition-delay:0.1s">
+    <div class="marquee-track" id="marquee-track">
+      <!-- First set -->
+      <div class="skill-pill"><img src="assets/html.png" alt="HTML5"><span>HTML5</span></div>
+      <div class="skill-pill"><img src="assets/css.png" alt="CSS3"><span>CSS3</span></div>
+      <div class="skill-pill"><img src="assets/tailwind css.png" alt="Tailwind CSS"><span>Tailwind CSS</span></div>
+      <div class="skill-pill"><img src="assets/bootstrap.png" alt="Bootstrap"><span>Bootstrap</span></div>
+      <div class="skill-pill"><img src="assets/js.png" alt="JavaScript"><span>JavaScript</span></div>
+      <div class="skill-pill"><img src="assets/react.png" alt="React.js"><span>React.js</span></div>
+      <div class="skill-pill"><img src="assets/node.js.png" alt="Node.js"><span>Node.js</span></div>
+      <div class="skill-pill"><img src="assets/python.png" alt="Python"><span>Python</span></div>
+      <div class="skill-pill"><img src="assets/c.png" alt="C"><span>C</span></div>
+      <div class="skill-pill"><img src="assets/tensorflow.png" alt="TensorFlow"><span>TensorFlow</span></div>
+      <div class="skill-pill"><img src="assets/machine learning.png" alt="ML"><span>Machine Learning</span></div>
+      <div class="skill-pill"><img src="assets/flutter.png" alt="Flutter"><span>Flutter</span></div>
+      <div class="skill-pill"><img src="assets/firebase.png" alt="Firebase"><span>Firebase</span></div>
+      <div class="skill-pill"><img src="assets/supabase.png" alt="Supabase"><span>Supabase</span></div>
+      <div class="skill-pill"><img src="assets/git.png" alt="Git"><span>Git</span></div>
+      <div class="skill-pill"><img src="assets/meta.png" alt="Meta Ads"><span>Meta Ads</span></div>
+      <div class="skill-pill"><img src="assets/google.png" alt="Google Ads"><span>Google Ads</span></div>
+      <div class="skill-pill"><img src="assets/omnisend.png" alt="Omnisend"><span>Omnisend</span></div>
+      <!-- Duplicate set -->
+      <div class="skill-pill"><img src="assets/html.png" alt="HTML5"><span>HTML5</span></div>
+      <div class="skill-pill"><img src="assets/css.png" alt="CSS3"><span>CSS3</span></div>
+      <div class="skill-pill"><img src="assets/tailwind css.png" alt="Tailwind CSS"><span>Tailwind CSS</span></div>
+      <div class="skill-pill"><img src="assets/bootstrap.png" alt="Bootstrap"><span>Bootstrap</span></div>
+      <div class="skill-pill"><img src="assets/js.png" alt="JavaScript"><span>JavaScript</span></div>
+      <div class="skill-pill"><img src="assets/react.png" alt="React.js"><span>React.js</span></div>
+      <div class="skill-pill"><img src="assets/node.js.png" alt="Node.js"><span>Node.js</span></div>
+      <div class="skill-pill"><img src="assets/python.png" alt="Python"><span>Python</span></div>
+      <div class="skill-pill"><img src="assets/c.png" alt="C"><span>C</span></div>
+      <div class="skill-pill"><img src="assets/tensorflow.png" alt="TensorFlow"><span>TensorFlow</span></div>
+      <div class="skill-pill"><img src="assets/machine learning.png" alt="ML"><span>Machine Learning</span></div>
+      <div class="skill-pill"><img src="assets/flutter.png" alt="Flutter"><span>Flutter</span></div>
+      <div class="skill-pill"><img src="assets/firebase.png" alt="Firebase"><span>Firebase</span></div>
+      <div class="skill-pill"><img src="assets/supabase.png" alt="Supabase"><span>Supabase</span></div>
+      <div class="skill-pill"><img src="assets/git.png" alt="Git"><span>Git</span></div>
+      <div class="skill-pill"><img src="assets/meta.png" alt="Meta Ads"><span>Meta Ads</span></div>
+      <div class="skill-pill"><img src="assets/google.png" alt="Google Ads"><span>Google Ads</span></div>
+      <div class="skill-pill"><img src="assets/omnisend.png" alt="Omnisend"><span>Omnisend</span></div>
+    </div>
+  </div>
+</section>
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+<!-- ══════════════ PROJECTS ══════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">What I've Built</div>
+      <h2 class="section-title">Featured<br><em>Projects</em></h2>
+    </div>
+    <div class="projects-grid">
 
-        // Scroll animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+      <div class="project-card reveal" style="transition-delay:0s">
+        <div class="project-thumb">
+          <img src="assets/ai.png" alt="AI Sign Language Conversion">
+          <div class="project-badge">Published · IJERT 2025</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">AI Sign Language Conversion</div>
+          <div class="project-desc">Real-time hand gesture recognition app built with Flutter and TensorFlow Lite that converts sign language to spoken audio — enhancing accessibility for the hearing-impaired community.</div>
+          <div class="project-tags">
+            <span class="tag">Flutter</span><span class="tag">TensorFlow Lite</span><span class="tag">ML</span>
+          </div>
+        </div>
+      </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                }
-            });
-        }, observerOptions);
+      <div class="project-card reveal" style="transition-delay:0.08s">
+        <div class="project-thumb">
+          <img src="assets/face.png" alt="FaceVault">
+        </div>
+        <div class="project-body">
+          <div class="project-title">FaceVault — Biometric Cloud Storage</div>
+          <div class="project-desc">Passwordless face recognition login system using face-api.js for biometric authentication, Firebase for real-time data, and Google Drive API for secure cloud storage access.</div>
+          <div class="project-tags">
+            <span class="tag">face-api.js</span><span class="tag">Firebase</span><span class="tag">Google Drive API</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/Dhivyaselvakumar/Face-app" target="_blank" class="proj-btn code"><i class="fab fa-github"></i> Code</a>
+          <a href="https://keen-unicorn-fe6d06.netlify.app/" target="_blank" class="proj-btn demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
+      </div>
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+      <div class="project-card reveal" style="transition-delay:0.16s">
+        <div class="project-thumb">
+          <img src="assets/edu.png" alt="EduAdvisor">
+        </div>
+        <div class="project-body">
+          <div class="project-title">EduAdvisor — AI Career Guidance</div>
+          <div class="project-desc">Web platform powered by a trained ML recommendation model that analyses student academic profiles, interests, and scores to deliver personalised career path suggestions for 12th graders.</div>
+          <div class="project-tags">
+            <span class="tag">ML</span><span class="tag">Python</span><span class="tag">HTML/CSS/JS</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/Dhivyaselvakumar/EduAdvisor" target="_blank" class="proj-btn code"><i class="fab fa-github"></i> Code</a>
+          <a href="https://eduadvisor.netlify.app/" target="_blank" class="proj-btn demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+        </div>
+      </div>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-dark-950', 'shadow-lg');
-                nav.classList.remove('bg-dark-950/95');
-            } else {
-                nav.classList.add('bg-dark-950/95');
-                nav.classList.remove('bg-dark-950', 'shadow-lg');
-            }
-        });
+      <div class="project-card reveal" style="transition-delay:0.24s">
+        <div class="project-thumb">
+          <img src="assets/refl.png" alt="Recruitment Scam Detector">
+          <div class="project-badge">Published · Tranz 2026</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Recruitment Scam Detector</div>
+          <div class="project-desc">Multi-source fraud detection system combining NLP and ML to analyse job postings and produce a fraud probability risk score, surfaced through a Flask web interface.</div>
+          <div class="project-tags">
+            <span class="tag">NLP</span><span class="tag">Machine Learning</span><span class="tag">Flask</span>
+          </div>
+        </div>
+      </div>
 
-        // Active navigation link
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      <div class="project-card reveal" style="transition-delay:0.32s">
+        <div class="project-thumb">
+          <img src="assets/ter.png" alt="TerNova">
+        </div>
+        <div class="project-body">
+          <div class="project-title">TerNova — Mental Health App</div>
+          <div class="project-desc">Personalised mental health support application powered by Generative AI — analyses user mood patterns to deliver empathetic, context-aware conversational responses and coping strategies.</div>
+          <div class="project-tags">
+            <span class="tag">GenAI</span><span class="tag">Flutter</span><span class="tag">Firebase</span>
+          </div>
+        </div>
+        <div class="project-footer">
+          <a href="https://github.com/Dhivyaselvakumar/TerNova" target="_blank" class="proj-btn code" style="flex:unset;width:100%"><i class="fab fa-github"></i> View Code</a>
+        </div>
+      </div>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
+      <div class="project-card reveal" style="transition-delay:0.4s">
+        <div class="project-thumb">
+          <img src="assets/refl.png" alt="REFL Security System">
+          <div class="project-badge">ICON: ENIAS'25</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">REFL — Embedded Security System</div>
+          <div class="project-desc">Comprehensive embedded system integrating rain, earthquake, fire, and laser sensors to enable multi-hazard detection and automated alerts. Presented at ICON: ENIAS'25.</div>
+          <div class="project-tags">
+            <span class="tag">IoT</span><span class="tag">Embedded Systems</span><span class="tag">Sensors</span>
+          </div>
+        </div>
+      </div>
 
-            navLinks.forEach(link => {
-                link.classList.remove('text-primary-500');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('text-primary-500');
-                }
-            });
-        });
-    </script>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ACHIEVEMENTS ══════════════ -->
+<section id="achievements">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">Recognition &amp; Milestones</div>
+      <h2 class="section-title">Achievements &amp;<br><em>Honours</em></h2>
+    </div>
+    <div class="ach-grid">
+
+      <div class="ach-card reveal" style="transition-delay:0s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+        <div class="ach-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b"><i class="fas fa-trophy"></i></div>
+        <div class="ach-year" style="background:rgba(245,158,11,0.12);color:#f59e0b">2023–24</div>
+        <div class="ach-name">ICT Academy Youth Talk</div>
+        <div class="ach-desc">Selected as Finalist and delivered industry talks in both 2023 and 2024 cycles.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.07s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div>
+        <div class="ach-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6"><i class="fas fa-star"></i></div>
+        <div class="ach-year" style="background:rgba(59,130,246,0.12);color:#3b82f6">2022–23</div>
+        <div class="ach-name">Best Performer Award</div>
+        <div class="ach-desc">Recognised for academic excellence, leadership, and consistent participation in college activities.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.14s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#22c55e,#4ade80)"></div>
+        <div class="ach-icon" style="background:rgba(34,197,94,0.12);color:#22c55e"><i class="fas fa-newspaper"></i></div>
+        <div class="ach-year" style="background:rgba(34,197,94,0.12);color:#22c55e">2025–26</div>
+        <div class="ach-name">Research Publications</div>
+        <div class="ach-desc">Published in IJERT (2025) and Tranz (2026); presented papers at SITCON and MITCON.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.21s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#ef4444,#f87171)"></div>
+        <div class="ach-icon" style="background:rgba(239,68,68,0.12);color:#ef4444"><i class="fas fa-code-branch"></i></div>
+        <div class="ach-year" style="background:rgba(239,68,68,0.12);color:#ef4444">2023–24</div>
+        <div class="ach-name">Smart India Hackathon</div>
+        <div class="ach-desc">Cleared internal selection rounds in consecutive years — 2023 and 2024.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.28s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#ec4899,#f472b6)"></div>
+        <div class="ach-icon" style="background:rgba(236,72,153,0.12);color:#ec4899"><i class="fas fa-certificate"></i></div>
+        <div class="ach-year" style="background:rgba(236,72,153,0.12);color:#ec4899">2024–25</div>
+        <div class="ach-name">NPTEL Certifications</div>
+        <div class="ach-desc">Cloud Computing — Silver Medal (75%) and Online Privacy — 70% distinction.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.35s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#14b8a6,#2dd4bf)"></div>
+        <div class="ach-icon" style="background:rgba(20,184,166,0.12);color:#14b8a6"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="ach-year" style="background:rgba(20,184,166,0.12);color:#14b8a6">2025</div>
+        <div class="ach-name">MITCON Expo Presentation</div>
+        <div class="ach-desc">Presented FaceVault at MITCON inter-college technology exposition.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.42s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#6366f1,#818cf8)"></div>
+        <div class="ach-icon" style="background:rgba(99,102,241,0.12);color:#6366f1"><i class="fas fa-industry"></i></div>
+        <div class="ach-year" style="background:rgba(99,102,241,0.12);color:#6366f1">2025</div>
+        <div class="ach-name">CODISSIA Trade Expo</div>
+        <div class="ach-desc">Core contributor to the SalesTrackLive product launch at CODISSIA Trade Expo, Coimbatore.</div>
+      </div>
+
+      <div class="ach-card reveal" style="transition-delay:0.49s">
+        <div class="ach-top-bar" style="background:linear-gradient(90deg,#f97316,#fb923c)"></div>
+        <div class="ach-icon" style="background:rgba(249,115,22,0.12);color:#f97316"><i class="fas fa-microphone"></i></div>
+        <div class="ach-year" style="background:rgba(249,115,22,0.12);color:#f97316">2025</div>
+        <div class="ach-name">ENIAS'25 Conference</div>
+        <div class="ach-desc">Presented IoT Sensor Fusion research at ICON: ENIAS'25 conference.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="section-label">Let's Work Together</div>
+      <h2 class="section-title">Get in<br><em>Touch</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p>I'm always open to discussing new opportunities, collaborating on innovative projects, or simply talking about technology, AI, and digital marketing. Whether you have a role in mind or an idea to explore — reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:dhivyaselvam2005@gmail.com" class="c-link">
+            <div class="c-link-icon"><i class="fas fa-envelope"></i></div>
+            <div class="c-link-info"><div class="c-link-label">Email</div><div class="c-link-val">dhivyaselvam2005@gmail.com</div></div>
+            <i class="fas fa-arrow-right c-link-arrow"></i>
+          </a>
+          <a href="tel:+918526366761" class="c-link">
+            <div class="c-link-icon"><i class="fas fa-phone"></i></div>
+            <div class="c-link-info"><div class="c-link-label">Phone</div><div class="c-link-val">+91 85263 66761</div></div>
+            <i class="fas fa-arrow-right c-link-arrow"></i>
+          </a>
+          <a href="https://linkedin.com/in/dhivya-selvakumar-29a30427a" target="_blank" class="c-link">
+            <div class="c-link-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div class="c-link-info"><div class="c-link-label">LinkedIn</div><div class="c-link-val">dhivya-selvakumar-29a30427a</div></div>
+            <i class="fas fa-arrow-right c-link-arrow"></i>
+          </a>
+          <a href="https://github.com/Dhivyaselvakumar" target="_blank" class="c-link">
+            <div class="c-link-icon"><i class="fab fa-github"></i></div>
+            <div class="c-link-info"><div class="c-link-label">GitHub</div><div class="c-link-val">Dhivyaselvakumar</div></div>
+            <i class="fas fa-arrow-right c-link-arrow"></i>
+          </a>
+          <div class="c-link">
+            <div class="c-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="c-link-info"><div class="c-link-label">Location</div><div class="c-link-val">Madurai, Tamil Nadu, India</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card reveal from-right" style="transition-delay:0.15s">
+        <div class="form-title">Send a Message</div>
+        <div class="form-sub">I typically respond within 24 hours.</div>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">First Name</label>
+      <input type="text" name="first_name" class="form-input" required>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Last Name</label>
+      <input type="text" name="last_name" class="form-input" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input type="email" name="from_email" class="form-input" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Subject</label>
+    <input type="text" name="subject" class="form-input" required>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Message</label>
+    <textarea name="message" class="form-textarea" required></textarea>
+  </div>
+
+  <!-- OPTIONAL but recommended -->
+  <input type="hidden" name="to_email" value="dhivyaselvam2005@gmail.com">
+
+  <button type="submit" class="form-submit">Send Message</button>
+
+</form>
+        <div class="form-success" id="form-success">
+          <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+          <p style="font-weight:600;color:var(--ink);margin-bottom:0.25rem">Message sent successfully!</p>
+          <p>Thank you for reaching out. I'll be in touch shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-glow-line"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Dhivya<span>.</span></div>
+        <p class="footer-tagline">Business Analyst &amp; Frontend Developer crafting data-driven experiences and thoughtful digital products.</p>
+        <div class="footer-socials">
+          <a href="https://linkedin.com/in/dhivya-selvakumar-29a30427a" target="_blank" class="footer-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/Dhivyaselvakumar" target="_blank" class="footer-social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:dhivyaselvam2005@gmail.com" class="footer-social-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://dhivyaselvam-portfolio.netlify.app/" target="_blank" class="footer-social-btn" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Projects</div>
+        <ul class="footer-links">
+          <li><a href="https://keen-unicorn-fe6d06.netlify.app/" target="_blank">FaceVault</a></li>
+          <li><a href="https://eduadvisor.netlify.app/" target="_blank">EduAdvisor</a></li>
+          <li><a href="https://github.com/Dhivyaselvakumar/TerNova" target="_blank">TerNova</a></li>
+          <li><a href="https://salestracklive.com/" target="_blank">SalesTrackLive</a></li>
+          <li><a href="https://dhivyaselvam-portfolio.netlify.app/" target="_blank">Live Portfolio</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope footer-contact-icon"></i>
+          <div class="footer-contact-text"><a href="mailto:dhivyaselvam2005@gmail.com">dhivyaselvam2005@gmail.com</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone footer-contact-icon"></i>
+          <div class="footer-contact-text"><a href="tel:+918526366761">+91 85263 66761</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+          <div class="footer-contact-text">Madurai, Tamil Nadu, India</div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-graduation-cap footer-contact-icon"></i>
+          <div class="footer-contact-text">K.L.N. College of Engineering, Sivagangai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2026 <span>Dhivya Selvakumar</span>. Crafted with passion and precision.</div>
+      <div class="footer-bottom-links">
+        <a href="Dhivya_Selvakumar_Resume.pdf" download>Download CV</a>
+        <a href="#contact">Hire Me</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════ JAVASCRIPT ══════════════ -->
+<script>
+/* Custom Cursor */
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+function animateRing() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, .skill-pill, .project-card, .ach-card, .exp-card, .c-link').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup', () => document.body.classList.remove('cursor-click'));
+
+/* Smooth Scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+  });
+});
+
+/* Hamburger */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobile-menu');
+const hamIcon = document.getElementById('hamburger-icon');
+ham.addEventListener('click', () => {
+  mob.classList.toggle('open');
+  hamIcon.classList.toggle('fa-bars');
+  hamIcon.classList.toggle('fa-times');
+});
+document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+  mob.classList.remove('open');
+  hamIcon.classList.add('fa-bars');
+  hamIcon.classList.remove('fa-times');
+}));
+
+/* Navbar scroll */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+/* Active nav */
+const sections = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let curr = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) curr = s.id; });
+  navAs.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + curr && !a.classList.contains('nav-cta')); });
+});
+
+/* Reveal */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* Back to top */
+document.getElementById('back-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* Contact form */
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  form.style.display = 'none';
+  success.style.display = 'block';
+}
+</script>
+<script>
+emailjs.init("gUJf0NlFGJ0jqZtBk");
+
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = "Sending...";
+  btn.disabled = true;
+
+  emailjs.sendForm('service_dga6mhn', 'template_q7z239s', '#contact-form')
+    .then(() => {
+      document.getElementById('contact-form').style.display = 'none';
+      document.querySelector('.form-success').style.display = 'block';
+    })
+    .catch((error) => {
+      console.error("FAILED...", error);
+      btn.textContent = "Failed — try again";
+      btn.disabled = false;
+    });
+}
+</script>
 </body>
 </html>
